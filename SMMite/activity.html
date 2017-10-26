@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Активность</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="js/highcharts.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(function (){
+                $.get("getjson.php", { url: "http://smmite.com/smmite-backend/api/core/stats/activity/last-week-group-data/", vkGroupId: "30022666" })
+                .done(function(data) {
+//                    console.dir(JSON.parse(data));
+                    localStorage.setItem('jsondata', data);
+                    drawGraph();
+//                    drawGraph(JSON.parse(data).reverse());
+                });
+//                       
+            });
+            function drawGraph(curWeekDay = new Date().toLocaleString("ru", {weekday:'short'})){
+                var dataArr = JSON.parse(localStorage.getItem('jsondata')).reverse();
+                curWeekDay = curWeekDay.charAt(0).toUpperCase() + curWeekDay.substr(1);  
+                var hours = [];
+                var comments = [];                  //количество комментариев
+                var reposts = [];                   //количество репостов
+                var likes = [];                     //количество лайков
+                var weekDay = '';                   //текущий день недели
+                var weekDaysArr = [];               //массив дней недели
+                var x_fill_begin = 0;               //координата начала заливки выходных
+                var x_fill_end = 0;                 //координата конца заливки выходных
+                var sum_R = 0;                      //сумма всех репостов   
+                var sum_L = 0;                      //сумма всех лайков
+                var sum_C = 0;                      //сумма всех комментов   
+                var sum = 0;                        //сумма всех репостов, лайков и комментов   
+                console.dir(dataArr);
+                $('.weekdays').html('');
+                dataArr.forEach(function(item, i){                
+                    weekDay = new Date(item['Day']).toLocaleString("ru", {weekday:'short'});                    
+                    weekDay = weekDay.charAt(0).toUpperCase() + weekDay.substr(1);                    
+                    weekDaysArr.push(weekDay);
+                    if(weekDay === curWeekDay){
+                        item['HourData'].forEach(function(hour,j){
+                            hours.push(hour.Hour < 10 ? '0' + hour.Hour + ':00' : hour.Hour + ':00');
+                            comments.push(hour.Comments);
+                            likes.push(hour.Likes);
+                            reposts.push(hour.Reposts);
+                            sum_R += hour.Reposts;
+                            sum_L += hour.Likes;
+                            sum_C += hour.Comments;
+                            sum += hour.Comments + hour.Likes + hour.Reposts;
+                        });
+                        $htmlstr = '<button class="btn-link" type="button" onclick="drawGraph( \'' + weekDay + '\')"><b>' + weekDay + '</b></button>';
+                    }else $htmlstr = '<button class="btn-link" type="button" onclick="drawGraph(\'' + weekDay + '\')">' + weekDay + '</button>';
+                    $('.weekdays').append($htmlstr);
+                    //если нужен будет график за неделю - это координаты заливки
+                    /*
+                    if(weekDay === "суббота"){
+                        x_fill_begin = i - 0.5;
+                        x_fill_end = i + 1.5;
+                    }
+                    */
+                });
+                if(sum !== 0){
+                    $('.diagramm').show();
+                    sum_R = Math.round(sum_R*100/sum);
+                    sum_L = Math.round(sum_L*100/sum);
+                    sum_C = Math.round(sum_C*100/sum);
+                }else {
+                    $('.diagramm').hide();
+                }                
+                console.log(sum, sum_R, sum_L, sum_C);
+                console.dir(hours);
+                //
+                
+                //для графика
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'areaspline'
+                    },
+                    title: {
+                        text: 'Данные активности за прошедшую неделю'
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        verticalAlign: 'top',
+                        x: 150,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    xAxis: {
+                        categories: hours,
+                        plotBands: [{ // visualize the weekend
+                            from: x_fill_begin,
+                            to: x_fill_end,
+                            color: 'rgba(68, 170, 213, .2)'
+                        }]
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Количество'
+                        }
+                    },
+                    tooltip: {
+                        shared: true,
+                        valueSuffix: ''
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        areaspline: {
+                            fillOpacity: 0.5
+                        }
+                    },
+                    series: [{
+                        name: 'Комментарии',
+                        data: comments,
+                        color: '#ff0000'
+                    }, {
+                        name: 'Репосты',
+                        data: reposts,
+                        color: '#0000FF'                        
+                    }, {
+                        name: 'Лайки',
+                        data: likes,
+                        color: '#82FA58'            
+                    }]
+                });
+                drawPie('container_pie1','Комментарии',sum_C,'#ff0000');
+                drawPie('container_pie2','Репосты',sum_R,'#0000FF');
+                drawPie('container_pie3','Лайки',sum_L,'#82FA58');
+            }
+            function drawPie(tag,name,per,c){
+                if(per){
+                    Highcharts.getOptions().plotOptions.pie.colors = (function () {
+                        var colors = [c, Highcharts.Color('#fff').brighten(-0.1).get('rgb')];                       
+                        return colors;
+                    }());
+
+                    Highcharts.chart(tag, {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: String(per) + '%',
+                            align: 'center',
+                            verticalAlign: 'middle'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white'
+                                    }
+                                },
+                                startAngle: 0,
+                                endAngle: 360,
+                                center: ['50%', '50%']
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            innerSize: '50%',
+                            data: [
+                                [name,   per],
+                                ['',   100-per]
+                            ]
+                        }]
+                    });
+                }                
+            }
+        </script>
+        <style>
+            a{
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="weekdays"></div>
+            <div class="diagramm">
+                <div id="container_pie1" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <div id="container_pie2" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <div id="container_pie3" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>            
+            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>
+    </body>
+</html>
