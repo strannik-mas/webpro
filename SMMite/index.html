@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Авторизация Вконтакте</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            function getVKdata(){
+                location.href = "https://oauth.vk.com/authorize?client_id=6236250&redirect_uri=http://smmite.com/smmite-backend/api/core/auth&display=page&scope=email,groups,offline&response_type=code&v=5.69&state=http://smmite.com/";
+            }
+            window.onload = function(){
+                console.log(location.href);
+                /*
+                if(location.href.indexOf("access_token")){
+                    var params = window
+                        .location
+                            .href
+                            .replace('http://smmite.com/#', '')
+                            .split('&')
+                            .reduce(
+                                function (p, e) {
+                                        var a = e.split('=');
+                                        p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                                        return p;
+                                },
+                                {}
+                            );
+//                    console.log(params['access_token']);
+                    location.href = "https://api.vk.com/method/users.get?uids=" + params['user_id'] + "&fields=uid,first_name,last_name,nickname,screen_name,sex,bdate,city,country,timezone,photo&redirect_uri=http://smmite.com/&access_token=" + params['access_token'];
+                    
+                }*/
+            };
+        </script>
+    </head>
+    <body>
+        <button onclick="getVKdata()">Войти через Вконтакте</button>
+        <div id="userdata"></div>
+    </body>
+</html>

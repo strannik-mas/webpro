@@ -39,16 +39,21 @@
                 var sum = 0;                        //сумма всех репостов, лайков и комментов   
                 console.dir(dataArr);
                 $('.weekdays').html('');
-                dataArr.forEach(function(item, i){                
-                    weekDay = new Date(item['Day']).toLocaleString("ru", {weekday:'short'});                    
-                    weekDay = weekDay.charAt(0).toUpperCase() + weekDay.substr(1);                    
+                dataArr.forEach(function(item, i){ 
+                    weekDay = new Date(item['Day']);
+                    //перевод на летнее время
+                    weekDay.setHours((weekDay.getHours())*1 + 1);
+                    weekDay = weekDay.toLocaleString("ru", {weekday:'short'}); 
+                    weekDay = weekDay.charAt(0).toUpperCase() + weekDay.substr(1);    
                     weekDaysArr.push(weekDay);
                     if(weekDay === curWeekDay){
                         item['HourData'].forEach(function(hour,j){
                             hours.push(hour.Hour < 10 ? '0' + hour.Hour + ':00' : hour.Hour + ':00');
-                            comments.push(hour.Comments);
-                            likes.push(hour.Likes);
-                            reposts.push(hour.Reposts);
+                            /*random data*/
+                            comments.push(Math.round(Math.random()*100));
+                            likes.push(Math.round(Math.random()*100));
+                            reposts.push(Math.round(Math.random()*100));
+                            
                             sum_R += hour.Reposts;
                             sum_L += hour.Likes;
                             sum_C += hour.Comments;
