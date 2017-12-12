@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>rus_shoplogistics</id>
+    <version>1.0.1</version>
+    <name>ShopLogistics - доставка в пвз</name>
+    <description>ShopLogistics - доставка в пвз</description>
+    <default_language>ru</default_language>
+
+    <priority>7100</priority>
+    <position>710</position>
+    <status>active</status>
+
+    <compatibility>
+        <dependencies>store_locator</dependencies>
+        <core_version>
+            <min>4.2.1</min>
+        </core_version>
+        <core_edition>
+            ULTIMATE,MULTIVENDOR
+        </core_edition>
+    </compatibility>
+
+    <settings layout="separate" edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="api_id">
+                        <type>input</type>
+                    </item>
+                    <item id="from_city_code">
+                        <type>input</type>
+                        <default_value>405065</default_value>
+                    </item>
+                    <item id="site_name">
+                        <type>input</type>
+                    </item>
+                    <item id="zabor_places_code">
+                        <type>input</type>
+                    </item>
+                    <item id="products_list">
+                        <type>checkbox</type>
+                    </item>
+                    <item id="get_products_from_store">
+                        <type>checkbox</type>
+                    </item>
+                    <item id="request_url">
+                        <type>input</type>
+                        <default_value>http://client-shop-logistics.ru/index.php?route=deliveries/api</default_value>
+                    </item>
+
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <queries>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:rus_shoplogistics_orders` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `delivery_date` date NOT NULL,
+            `delivery_time_from` time NOT NULL,
+            `delivery_time_to` time NOT NULL,
+            `order_id` int(11) NOT NULL,
+            `code` varchar(255) NOT NULL,
+            `type` varchar(255) NOT NULL,
+            `status` varchar(255) NOT NULL,
+            `post_status` varchar(255) NOT NULL,
+            `current_filial` varchar(255) NOT NULL,
+            `reciver_filial` varchar(255) NOT NULL,
+            `payment_status` varchar(255) NOT NULL,
+            `datetime` datetime NOT NULL,
+            `updated_datetime` datetime NOT NULL,
+            `errors` text NOT NULL,
+            `is_edit` int(11) NOT NULL DEFAULT '1',
+             PRIMARY KEY (`id`)
+             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+        </item>
+
+        <item for="uninstall">DROP TABLE IF EXISTS `?:rus_shoplogistics_orders`;</item>
+    </queries>
+
+    <functions>
+        <item for="install">fn_rus_shoplogistics_install</item>
+        <item for="uninstall">fn_rus_shoplogistics_uninstall</item>
+    </functions>
+</addon>

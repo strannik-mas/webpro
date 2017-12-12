@@ -1,0 +1,11 @@
+#addon_sd_loyalty_programinstalled .bg-icon,
+#addon_sd_loyalty_program .bg-icon {
+    background-image: url('../../../media/images/addons/sd_loyalty_program/icon.png');
+    background-size: contain;
+    border: 0px;
+}
+
+#addon_sd_loyalty_programinstalled .bg-icon i,
+#addon_sd_loyalty_program .bg-icon i {
+    display: none;
+}

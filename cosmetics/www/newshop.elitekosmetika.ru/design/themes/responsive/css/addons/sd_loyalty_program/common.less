@@ -1,0 +1,31 @@
+.sd-loyalty-program {
+    font-size: 0;
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+
+    &__card {
+        display: inline-block;
+        box-sizing: border-box;
+        width: @card-width-lg;
+        padding: 20px;
+        vertical-align: top;
+
+        @media (max-width: 767px) {
+            width: @card-width-md;
+        }
+
+        @media (max-width: 480px) {
+            width: @card-width-xs;
+        }
+    }
+
+    .ty-pict {
+        width: 100%;
+        padding-bottom: 35px;
+    }
+}
+
+.sd-loyalty-program-desc {
+    word-wrap: break-word;
+}

@@ -1,0 +1,165 @@
+v3.1 от 22 января 2017
+--------------------------------------------------------------------------------
+[+] Добавлены возможность скрытия описания страницы категории и описания сео-страницы
+[+] Модуль адаптирован под работу с модулем - Мультиописания категорий https://cs-cart.alexbranding.com/ru/multiple-categories-descriptions.html
+[+] Модуль адаптирован под работу с модулем - Фильтр по цвету https://cs-cart.alexbranding.com/ru/abcolorfilters.html
+[-] Исправлен баг отображения скрытых сео-страниц в хлебных крошках товара
+
+v3.0 от 20 декабря 2016
+--------------------------------------------------------------------------------
+[+] Добавлены новые состояния сео-страниц:
+    - Зафиксированное состояние - такая сео-страница НЕ перегенерируется и отображается на витрине сайта;
+    - Незафиксированное состояние - такая сео-страница перегенерируется и отображается на витрине сайта;
+    - Скрытое состояние - такая сео-страница НЕ перегенерируется и НЕ отображается на витрине сайта.
+        А при прямом переходе на такую сео-страницу она будет отображаться, но в код будет добавлен <meta name="robots" content="noindex, nofollow" />;
+[+] Добалена возможность предварительной установки состояния сео-страницы в правиле генерации сео-страниц;
+[+] Модуль адаптирован под 4.4.x;
+[+] Модуль адаптирован под тему UniTheme;
+[+] Если в рамках одной категории уже существует Зафиксированная или Незафиксированная сео-страница с такой же сео-ссылкой,
+    то для новой сео-страницы с такой же сео-ссылкой будет добавлен суффикс "-absf-dublicate-<lang_code>-<hash_string>"
+    Например, есть категория - Люстры, и Две характеристик - Материал верхней части и Материал нижней части.
+    Предположим есть товары, которые имеют Материал верхней части - "Стекло" и Материал нижней части - "Стекло".
+    Ранее, при автогенерации по этим двум характеристикам, мы бы получили две разные сео-страницы с одной и той же ссылкой, при этом
+    открывалась бы только одна из них:
+        Люстры / Материал верхней части: стекло     --> www.store.com/lyustry/steklo
+        Люстры / Материал нижней части: стекло      --> www.store.com/lyustry/steklo
+    Теперь же, будет так:
+        Люстры / Материал верхней части: стекло     --> www.store.com/lyustry/steklo
+        Люстры / Материал нижней части: стекло      --> www.store.com/lyustry/steklo-absf-dublicate-ru-45-1122
+    Для отслеживания подобных ссылок просто введите в форму поиска сео-страниц в поле "Поиск по SEO ссылке страницы" следующую конструкцию (без кавычек) "%-absf-dublicate-%"
+[+] Добавлены автоматические редиректы:
+    - если категория никак не изменилась, а вариант характеристики изменился -> выполняется 301-й редирект на страницу категории;
+    - если категория изменила свое положение и/или сео-ссылку, а вариант характеристики не изменился -> редирект на сео-страницу с обновленным путем/именем категории;
+    - если категория изменила свое положение и/или сео-ссылку и изменился сео-вариант характеристики -> редирект на сео-страницу с обновленным путем/именем категории;
+[~] Исправлена генерация Sitemap (добавлена поддержка https);
+[~] поля Meta keywords и Meta description для сео-страниц выводятся в textarea, а не в input;
+
+v2.10 October 21, 2016
+--------------------------------------------------------------------------------
++ added compatibility with the addon "Addon - Advanced Sitemap for CS-Cart" https://cs-cart.alexbranding.com/en/abadvancedsitemap.html
+
+v2.9 October 21, 2016
+--------------------------------------------------------------------------------
+~ fixed bag generate seo pages;
+
+v2.8 October 8, 2016
+--------------------------------------------------------------------------------
+~ addon adapted to version cs-cart 4.3.x;
+
+v2.7 October 7, 2016
+--------------------------------------------------------------------------------
+~ fixed bag generate seo pages;
+~ correct display seo-variant in breadcrumbs products;
+
+v2.5.1 September 19, 2016 (Special thanks to Alexei S. for his comments and recommendations)
+--------------------------------------------------------------------------------
+~ fixed bag of the rule generate seo pages with "Parent categories" setting;
+
+v2.5 September 18, 2016 (Special thanks to Alexei S. for his comments and recommendations)
+--------------------------------------------------------------------------------
++ added field SEO variant into export/import schemas
+~ fixed bag of the rule generate seo pages with "Parent categories" setting;
+
+v2.4 от 14 сентября 2016
+--------------------------------------------------------------------------------
++ при создании новой сео-страницы, по умолчанию, имеет статус Зафиксированная;
++ добавлен функционал Экспортировать выбранные сео-страницы;
++ добавлен функционал Экспортировать найденные сео-страницы;
++ добавлен поиск сео-страниц по hash комбинации;
+~ исправлен баг сохранения нового варианта характеристики;
+
+v2.31 от 12 сентября 2016
+--------------------------------------------------------------------------------
+~ исправлен баг подстановки шаблона полей;
+
+v2.3 от 09 сентября 2016 (выражаем особую благодарность Алексею С. за его замечания и рекомендации)
+--------------------------------------------------------------------------------
++ при создании правила, в списке характеристик, характеристики не имеющие фильтров - заблокированы;
+~ исправлен поиск сео-страниц;
+~ исправлен баг автогенерации;
+
+v2.2 от 08 сентября 2016 (выражаем особую благодарность Алексею С. за его замечания и рекомендации)
+--------------------------------------------------------------------------------
++ добавлены сортировки на странице списка сео-страниц;
++ в выпадающем списке характеристик несгруппированные характеристики собраны в отдельную группу;
++ введены 5 сообщений описывающие причины отказа выполнения автогенерации;
++ подсказки сео-страниц теперь отображаются сгруппированными по фильтрам;
+~ исправлен поиск сео-страниц по характеристикам;
+~ исправлен баг автогенерации - некорректно удалялись старые незафиксированные страницы;
+~ исправлен баг автогенерации - автогенерация происходит только по активным характеристикам, по активным фильтрам, по активным и непустым категориям и активным товарам;
+~ внесены исправления перевода;
+
+v2.1 от 05 сентября 2016 (выражаем особую благодарность Алексею С. за его замечания и рекомендации)
+--------------------------------------------------------------------------------
++ добавлена автогенерация сео-страниц по нескольким характеристикам одновременно;
++ добавлен новый плейсхолдер %seo_variant% (см. справку п.1.3 и п.3);
++ добавлен новый плейсхолдер %filter%;
++ добавлены подсказки при просмотре списка сео-страниц;
++ добавлена подсказка на странице редактирования сео-страницы;
++ добавлены дополнительные ссылки для удобства навигации
++ добавлена возможность генерировать сео-страницы по нескольким правилам одновременно;
++ добавлена возможность поиска сео-страниц по нескольким характеристикам;
++ добавлены Образцы полей сео-страницы, которые помогут сео-менеджерам в едином формате формировать тексты сео-страниц (AB: Модули -> AB: SEO страницы для фильтров -> Образцы полей страницы);
+
+v1.62 August 16, 2016
+--------------------------------------------------------------------------------
++ category description and SEO page is only displayed on the first page of pagination;
++ If you have our addon https://cs-cart.alexbranding.com/en/custom-h1-for-category-page.html Custom H1 for the category page, you can use additional placeholders: %custom_category_h1%, %custom_category_h1_lower%, %Custom_category_h1%, %CUSTOM_CATEGORY_H1%
++ added prefixes and suffixes features;
++ added support numerical filters;
++ added support price filters;
+~ in breadcrumbs of product for features type of "Checkbox - Mutliple" is displayed only the first variant;
+~ limited list of available types features to generate pages of rules:
+        * Checkbox - Single
+        * Checkbox - Mutliple
+        * SelectBox - Text
+        * SelectBox - Brand
+~ SEO page you can create on such features:
+        * Checkbox - Single
+        * Checkbox - Mutliple
+        * SelectBox - Text
+        * SelectBox - Number
+        * SelectBox - Brand
+        * Others - Number
+        * Others - Date
+
+v1.61 August 8, 2016
+--------------------------------------------------------------------------------
+~ fixed create seo-canonical url when pagination;
+~ fixed import;
+~ sitemap is generated only on the active and existing categories;
++ when exporting added new fields. They are the category name and Variants;
++ when exporting the empty required fields will be filled with placeholder - %category% %variant%;
++ when deleting a category removes its SEO pages;
++ added placeholders in three formats: '%category%', '%Category%', '%CATEGORY%', '%variant%', '%Variant%', '%VARIANT%';
+
+v1.6 Jule 22, 2016
+--------------------------------------------------------------------------------
++ add Export/Import SEO pages into csv
+
+v1.5 Jule 10, 2016 (addon is optimized for very big stores: more then 600 categories and more then 130000 products)
+--------------------------------------------------------------------------------
++ use caching for filter links;
++ show breadcrumbs on product page;
++ description of SEO page will be displayed only on the first page of pagination;
+~ fix translate;
+
+v1.4 Jule 10, 2016
+--------------------------------------------------------------------------------
++ now SEO pages will automatically be generated not only for the main product category, also for the additional categories of the one;
++ you can add name of main product category into product breadcrumbs;
+~ fixed a bug on the search page;
+~ fixed a problem while choosing a large of number of filter variants;
+
+v1.3 June 15, 2016
+--------------------------------------------------------------------------------
++ Added compatibility with our addon CS-Cart addon custom Н1 header for category page
+https://cs-cart.alexbranding.com/en/custom-h1-for-category-page.html
+
+v1.2 June 2, 2016
+--------------------------------------------------------------------------------
+~ Fixed translation
+~ Fixed breadcrumbs on the product page
+~ Fixed search SEO page in the admin
+~ Fixed Sitemap generation
++ All fields SEO pages is required

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block_scheme scheme="1.0">
+    <settings>
+        <clean />
+        <default_language>en</default_language>
+    </settings>
+    <location dispatch="loyalty_program.view" is_default="0" lang_code="en" name="Loyalty Program" title="" meta_description="" meta_keywords="" position="130">
+        <containers>
+            <container position="TOP_PANEL" width="16" />
+
+            <container position="HEADER" width="16" />
+
+            <container position="CONTENT" width="16" user_class="content-grid">
+                <grid width="16" offset="0" user_class="" omega="1" alpha="1" wrapper="" content_align="FULL_WIDTH" html_element="div" clear="0">
+                    <blocks>
+                        <block>
+                            <type><![CDATA[breadcrumbs]]></type>
+                            <properties>
+                                <template><![CDATA[common/breadcrumbs.tpl]]></template>
+                            </properties>
+                            <lang_code><![CDATA[en]]></lang_code>
+                            <name><![CDATA[Breadcrumbs]]></name>
+                            <object_id><![CDATA[0]]></object_id>
+                            <object_type />
+                            <content />
+                            <object_ids />
+                            <wrapper />
+                            <user_class />
+                            <order><![CDATA[0]]></order>
+                            <status><![CDATA[A]]></status>
+                            <translations />
+                        </block>
+                    </blocks>
+                </grid>
+                <grid width="16" offset="0" user_class="" omega="1" alpha="1" wrapper="" content_align="FULL_WIDTH" html_element="div" clear="0">
+                    <blocks>
+                        <block>
+                            <type><![CDATA[html_block]]></type>
+                            <properties>
+                                <template><![CDATA[blocks/html_block.tpl]]></template>
+                            </properties>
+                            <lang_code><![CDATA[en]]></lang_code>
+                            <name><![CDATA[Loyalty program: Header]]></name>
+                            <object_id><![CDATA[0]]></object_id>
+                            <object_type />
+                            <content>
+                                <content><![CDATA[<h1>Loyalty program</h1>
+<p>Cool benefits!</p>
+
+<p>Go on, have a bit more.</p>
+
+<p>You make purchases frequently? Our company offers a reward program to you. The loyalty program may give advanced access to new products, special sales coupons or free merchandise.</p>
+
+<p>The program is flexible. Move up the loyalty ladder and increase the value of the rewards.</p>
+
+<p>Seems complicated? You will easily understand the extra bonuses you get moving from one level to another.</p>]]></content>
+                            </content>
+                            <object_ids />
+                            <wrapper />
+                            <user_class />
+                            <order><![CDATA[0]]></order>
+                            <status><![CDATA[A]]></status>
+                            <translations>
+                                <translation lang_code="ru">Программа лояльности: Заголовок</translation>
+                            </translations>
+                            <contents>
+                                <item>
+                                    <object_id><![CDATA[0]]></object_id>
+                                    <lang_code><![CDATA[en]]></lang_code>
+                                    <content>
+                                        <content><![CDATA[<h1>Loyalty program</h1>
+<p>Cool benefits!</p>
+
+<p>Go on, have a bit more.</p>
+
+<p>You make purchases frequently? Our company offers a reward program to you. The loyalty program may give advanced access to new products, special sales coupons or free merchandise.</p>
+
+<p>The program is flexible. Move up the loyalty ladder and increase the value of the rewards.</p>
+
+<p>Seems complicated? You will easily understand the extra bonuses you get moving from one level to another.</p>]]></content>
+                                    </content>
+                                    <object_type />
+                                </item>
+                                <item>
+                                    <object_id><![CDATA[0]]></object_id>
+                                    <lang_code><![CDATA[ru]]></lang_code>
+                                    <content>
+                                        <content><![CDATA[<h1>Программа лояльности</h1>
+<p>Получайте больше! Личная выгода для вас!</p>
+
+<p>Часто совершаете покупки у нас? Тогда вступайте в нашу клубную программу. Это дает возможность получать специальные купоны, новые или бесплатные товары.</p>
+
+<p>Программа включает в себя несколько уровней лояльности. Продвигайтесь по лестнице лояльности вверх и повышайте ценность ваших вознаграждений.</p>
+
+<p>Думаете это сложно? Нисколько. По мере продвижения от уровня к уровню вы сразу же поймёте и оцените предлагаемые бонусы.</p>]]></content>
+                                    </content>
+                                    <object_type />
+                                </item>
+                            </contents>
+                        </block>
+                    </blocks>
+                </grid>
+                <grid width="16" offset="0" user_class="" omega="1" alpha="1" wrapper="" content_align="FULL_WIDTH" html_element="div" clear="0">
+                    <blocks>
+                        <block>
+                            <type><![CDATA[main]]></type>
+                            <properties />
+                            <lang_code><![CDATA[en]]></lang_code>
+                            <name><![CDATA[Main Content]]></name>
+                            <object_id><![CDATA[0]]></object_id>
+                            <object_type />
+                            <content />
+                            <object_ids />
+                            <wrapper><![CDATA[blocks/wrappers/mainbox_general.tpl]]></wrapper>
+                            <user_class />
+                            <order><![CDATA[0]]></order>
+                            <status><![CDATA[A]]></status>
+                            <translations />
+                        </block>
+                    </blocks>
+                </grid>
+                <grid width="16" offset="0" user_class="" omega="1" alpha="1" wrapper="" content_align="FULL_WIDTH" html_element="div" clear="0">
+                    <blocks>
+                        <block>
+                            <type><![CDATA[html_block]]></type>
+                            <properties>
+                                <template><![CDATA[blocks/html_block.tpl]]></template>
+                            </properties>
+                            <lang_code><![CDATA[en]]></lang_code>
+                            <name><![CDATA[Loyalty program: Footer]]></name>
+                            <object_id><![CDATA[0]]></object_id>
+                            <object_type />
+                            <content>
+                                <content><![CDATA[<p>Loyalty program participants have advantages over the others. As a member, you will get access to bigger discounts, top-secret offers, privileges in order management, super fast information sharing and so on. The number of advantages depends on the program status.</p>
+
+<p>Join now!</p>]]></content>
+                            </content>
+                            <object_ids />
+                            <wrapper />
+                            <user_class />
+                            <order><![CDATA[0]]></order>
+                            <status><![CDATA[A]]></status>
+                            <translations>
+                                <translation lang_code="ru">Программа лояльности: Подвал</translation>
+                            </translations>
+                            <contents>
+                                <item>
+                                    <object_id><![CDATA[0]]></object_id>
+                                    <lang_code><![CDATA[en]]></lang_code>
+                                    <content>
+                                        <content><![CDATA[<p>Loyalty program participants have advantages over the others. As a member, you will get access to bigger discounts, top-secret offers, privileges in order management, super fast information sharing and so on. The number of advantages depends on the program status.</p>
+
+<p>Join now!</p>]]></content>
+                                    </content>
+                                    <object_type />
+                                </item>
+                                <item>
+                                    <object_id><![CDATA[0]]></object_id>
+                                    <lang_code><![CDATA[ru]]></lang_code>
+                                    <content>
+                                        <content><![CDATA[<p>У участников клубной программы есть преимущества. Вы получите доступ к щедрым скидкам, уникальным предложениям, получите привилегии в процессе обработки заказа. Преимущества будут зависеть от вашего уровня в клубной программе.</p>
+
+<p>Присоединяйтесь!</p>]]></content>
+                                    </content>
+                                    <object_type />
+                                </item>
+                            </contents>
+                        </block>
+                    </blocks>
+                </grid>
+            </container>
+
+            <container position="FOOTER" width="16" />
+        </containers>
+        <translations>
+            <translation lang_code="ru">
+                <meta_keywords><![CDATA[]]></meta_keywords>
+                <page_title><![CDATA[]]></page_title>
+                <meta_description><![CDATA[]]></meta_description>
+                <name>Программа лояльности</name>
+            </translation>
+        </translations>
+    </location>
+</block_scheme>

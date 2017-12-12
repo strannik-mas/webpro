@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>ek_theme</id>
+    <name>Тема EliteKosmetika</name>
+    <description>Модуль кастомизирует тему Responsive со стилем Elitekosmetika</description>
+    <default_language>ru</default_language>
+    <status>active</status>
+</addon>

@@ -1,0 +1,171 @@
+<addon scheme="2.0">
+<id>ab__addons_manager</id>
+<version>1.1</version>
+<name>AB: Addons Manager by AlexBranding team</name>
+<description>Manage Addons by AlexBranding team. Install and check for updates, get to know our new products. To use addons by AlexBranding team this addon should always be turned on.</description>
+<priority>10</priority>
+<position>0</position>
+<status>active</status>
+<auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+<default_language>en</default_language>
+<authors>
+<author>
+<name>AlexBranding</name>
+<email>info@alexbranding.com</email>
+<url>https://alexbranding.com</url>
+</author>
+</authors>
+<supplier>AlexBranding</supplier>
+<supplier_link>https://cs-cart.alexbranding.com</supplier_link>
+<compatibility>
+<core_version>
+<min>4.2.4</min>
+</core_version>
+<core_edition>ULTIMATE,MULTIVENDOR</core_edition>
+</compatibility>
+<settings edition_type="ROOT">
+<sections>
+<section id="settings" edition_type="ROOT">
+<items>
+<item id="code"><type>hidden</type><default_value>ABM-usac6nHgmRRhAAxV0bcHj</default_value></item>
+<item id="build"><type>hidden</type><default_value>26</default_value></item>
+</items>
+</section>
+</sections>
+</settings>
+<language_variables>
+<item lang="ru" id="ab__addons">AB: Модули</item>
+<item lang="uk" id="ab__addons">AB: Додатки</item>
+<item lang="en" id="ab__addons">AB: Addons</item>
+<item lang="ru" id="ab__addons_manager">AB: Менеджер модулей</item>
+<item lang="uk" id="ab__addons_manager">AB: Менеджер додатків</item>
+<item lang="en" id="ab__addons_manager">AB: Addons Manager</item>
+<item lang="ru" id="ab__addons_manager_menu_description">Управление модулями от AlexBranding. Установка и проверка обновлений модулей, а также можете ознакомиться с новинками от AlexBranding.</item>
+<item lang="uk" id="ab__addons_manager_menu_description">Керування додатками від AlexBranding. Встановлення та перевірка оновлень додатків, а також можете ознайомитися з новинками від AlexBranding.</item>
+<item lang="en" id="ab__addons_manager_menu_description">Manage Addons by AlexBranding. Install and check for updates, get to know our new products.</item>
+<item lang="ru" id="ab__am_addons">Список установленных модулей AlexBranding</item>
+<item lang="uk" id="ab__am_addons">Список встановлених додатків AlexBranding</item>
+<item lang="en" id="ab__am_addons">List of installed addons by AlexBranding team</item>
+<item lang="ru" id="ab__am_store">Все модули от команды AlexBranding</item>
+<item lang="uk" id="ab__am_store">Усі додатки від команди AlexBranding</item>
+<item lang="en" id="ab__am_store">All modules by AlexBranding team</item>
+<item lang="ru" id="ab__am_msg_error_code">Ошибка Кода лицензии модуля</item>
+<item lang="uk" id="ab__am_msg_error_code">Помилка Коду ліцензії додатку</item>
+<item lang="en" id="ab__am_msg_error_code">Error Code</item>
+<item lang="ru" id="ab__am_msg_addon_is_already_installed"><![CDATA[У вас уже установлен модуль <b>[name]</b> последней версии <b>[version]</b>]]></item>
+<item lang="uk" id="ab__am_msg_addon_is_already_installed"><![CDATA[У вас уже встановлен додаток <b>[name]</b> останньої версії <b>[version]</b>]]></item>
+<item lang="en" id="ab__am_msg_addon_is_already_installed"><![CDATA[You have already installed the addon <b>[name]</b> the latest version <b>[version]</b>]]></item>
+<item lang="ru" id="ab__am_msg_addon_is_already_installed_upd"><![CDATA[У вас уже установлен модуль <b>[name]</b> последней версии <b>[version]</b>, вам можете выполнить обновление модуля до версии <b>[version_last]</b>]]></item>
+<item lang="uk" id="ab__am_msg_addon_is_already_installed_upd"><![CDATA[У вас уже встановлен додаток <b>[name]</b> останньої версії <b>[version]</b>, ви можете виконати оновлення додатку до версії <b>[version_last]</b>]]></item>
+<item lang="en" id="ab__am_msg_addon_is_already_installed_upd"><![CDATA[You have already installed the addon <b>[name]</b> the latest version <b>[version]</b>, you can to perform a addon update to version <b>[version_last]</b>]]></item>
+<item lang="ru" id="ab__am_msg_addon_install"><![CDATA[Модуль <b>[name]</b> версии <b>[version]</b> установлен!]]></item>
+<item lang="uk" id="ab__am_msg_addon_install"><![CDATA[Додаток <b>[name]</b> версії <b>[version]</b> встановлен!]]></item>
+<item lang="en" id="ab__am_msg_addon_install"><![CDATA[Addon <b>[name]</b> version <b>[version]</b> is installed!]]></item>
+<item lang="ru" id="ab__am_addon_name">Название модуля</item>
+<item lang="uk" id="ab__am_addon_name">Назва додатку</item>
+<item lang="en" id="ab__am_addon_name">Addon name</item>
+<item lang="ru" id="ab__am_current_version">Тек.версия</item>
+<item lang="uk" id="ab__am_current_version">Пот.версія</item>
+<item lang="en" id="ab__am_current_version">Curr.ver.</item>
+<item lang="ru" id="ab__am_updates">Обновления</item>
+<item lang="uk" id="ab__am_updates">Оновлення</item>
+<item lang="en" id="ab__am_updates">Updates</item>
+<item lang="ru" id="ab__am_actions">Действия</item>
+<item lang="uk" id="ab__am_actions">Дії</item>
+<item lang="en" id="ab__am_actions">Actions</item>
+<item lang="ru" id="ab__am_built_on">от</item>
+<item lang="uk" id="ab__am_built_on">від</item>
+<item lang="en" id="ab__am_built_on">built on</item>
+<item lang="ru" id="ab__am_upd_mandatory">Есть важное обновление</item>
+<item lang="uk" id="ab__am_upd_mandatory">Є важливе оновлення</item>
+<item lang="en" id="ab__am_upd_mandatory">A mandatory update is available</item>
+<item lang="ru" id="ab__am_upd_general">Есть обычное обновление</item>
+<item lang="uk" id="ab__am_upd_general">Є звичайне оновлення</item>
+<item lang="en" id="ab__am_upd_general">A new update is available</item>
+<item lang="ru" id="ab__am_upd_actual">У вас актуальная версия</item>
+<item lang="uk" id="ab__am_upd_actual">У вас актуальна версія</item>
+<item lang="en" id="ab__am_upd_actual">You have actual version</item>
+<item lang="ru" id="ab__am_upd_error">Ошибка лицензии</item>
+<item lang="uk" id="ab__am_upd_error">Помилка ліцензії</item>
+<item lang="en" id="ab__am_upd_error">Error code license</item>
+<item lang="ru" id="ab__am_button_update">Обновить</item>
+<item lang="uk" id="ab__am_button_update">Оновити</item>
+<item lang="en" id="ab__am_button_update">Update</item>
+<item lang="ru" id="ab__am_upd_text_msg"><![CDATA[<p>Для модуля <u>[name]</u> существуют обновления.<br>Все изменения внесенные непосредственно в файлы модуля (контроллер, шаблоны или стили) - будут удалены.</p><p><b>Чтобы выполнить обновление вам необходимо выполнить следующее:</b></p>]]></item>
+<item lang="uk" id="ab__am_upd_text_msg"><![CDATA[<p>Для додатка <u>[name]</u> існують оновлення.<br>Усі зміни внесені безпосередньо в файли додатка (контролер, шаблони або стилі) - будуть видалені.</p><p><b>Щоб оновити додаток вам необхідно виконати наступне:</b></p>]]></item>
+<item lang="en" id="ab__am_upd_text_msg"><![CDATA[<p>Updates of the <u>[name]</u> is available.</p><p><b>To update, you need to do the following:</b></p>]]></item>
+<item lang="ru" id="ab__am_upd_text_msg_manager"><![CDATA[<ol><li>Загрузите новую версию модуля <a target="_blank" href="[href_api]">[name]</a>.</li><li>На странице <a target="_blank" href="[href_addons]">Модули -> Управления модулями</a> удалите модуль <u>[name]</u>.</li><li>На странице <a target="_blank" href="[href_addons]">Модули -> Управления модулями</a> выполните установку архива модуля через кнопку [+] указав путь к скачанному архиву по (п.1).</li></ol>]]></item>
+<item lang="uk" id="ab__am_upd_text_msg_manager"><![CDATA[<ol><li>Завантажте нову версію додатка <a target="_blank" href="[href_api]">[name]</a>.</li><li>На сторінці <a target="_blank" href="[href_addons]">Додатки -> Керування додатками</a> видаліть додаток <u>[name]</u>.</li><li>На сторінці <a target="_blank" href="[href_addons]">Додатки -> Керування додатками</a> виконайте інсталяцію архіву додатку через кнопку [+] вказавши шлях до завантаженого архіву по (п.1).</li></ol>]]></item>
+<item lang="en" id="ab__am_upd_text_msg_manager"><![CDATA[<ol><li>Download the new version of the <a target="_blank" href="[href_api]">[name]</a>.</li><li>On the page <a target="_blank" href="[href_addons]">Add-ons -> Manage add-ons</a> uninstall of the <u>[name]</u>.</li><li>On the page <a target="_blank" href="[href_addons]">Add-ons -> Manage add-ons</a>, perform an archive installation of the addon via the button [+] specifying the path to the downloaded file on the (p.1).</li></ol>]]></item>
+<item lang="ru" id="ab__am_upd_text_msg_addon"><![CDATA[<ol><li>На странице <a target="_blank" href="[href_addons]">Модули -> Управления модулями</a> запомните настройки модуля <u>[name]</u>.<li>На странице <a target="_blank" href="[href_addons]">Модули -> Управления модулями</a> удалите модуль <u>[name]</u>.<li>На странице <a target="_blank" href="[href_ab__am_addons]">[ab__am_addons]</a> выполните установку модуля [name]. Для этого введите код лицензии модуля <code>[code]</code> и нажмите кнопку [Установить модуль] (этот код вы получили при покупке модуля).</li><li>После успешной установки модуля на странице <a target="_blank" href="[href_addons]">Модули -> Управления модулями</a> восстановите его настройки.</li></ol>]]></item>
+<item lang="uk" id="ab__am_upd_text_msg_addon"><![CDATA[<ol><li>На сторінці <a target="_blank" href="[href_addons]">Додатки -> Керування додатками</a> запам'ятайте налаштування додатка <u>[name]</u>.<li>На сторінці <a target="_blank" href="[href_addons]">Додатки -> Керування додатками</a> видаліть додаток <u>[name]</u>.<li>На сторінці <a target="_blank" href="[href_ab__am_addons]">[ab__am_addons]</a> виконайте інсталяцію додатку [name]. Для цього введіть код ліцензії додатку <code>[code]</code> та натисніть кнопку [Встановити додаток] (цей код ви отримали при купівлі додатку).</li><li>Після вдалого встановлення додатка на сторінці <a target="_blank" href="[href_addons]">Додатки -> Керування додатками</a> відновіть його налаштування.</li></ol>]]></item>
+<item lang="en" id="ab__am_upd_text_msg_addon"><![CDATA[<ol><li>On the page <a target="_blank" href="[href_addons]">Add-ons -> Manage add-ons</a> remember settings of the <u>[name]</u>.<li>On the page <a target="_blank" href="[href_addons]">Add-ons -> Manage add-ons</a> uninstall of the <u>[name]</u>.<li>On the page <a target="_blank" href="[href_ab__am_addons]">[ab__am_addons]</a> to do the addon installation. To do this, enter the code addon license <code>[code]</code> and press button [Install addon] (this code you received when purchasing addon).</li><li>After successful installation of the addon on the page <a target="_blank" href="[href_addons]">Add-ons -> Manage add-ons</a> restore its settings.</li></ol>]]></item>
+<item lang="ru" id="ab__am_upd_text_changes"><![CDATA[<b>Список изменений в версии [version] от [date]:</b><p>[changes]</p>]]></item>
+<item lang="uk" id="ab__am_upd_text_changes"><![CDATA[<b>Список змін у версії [version] від [date]:</b><p>[changes]</p>]]></item>
+<item lang="en" id="ab__am_upd_text_changes"><![CDATA[<b>The list of changes in version [version] built on [date]:</b><p>[changes]</p>]]></item>
+<item lang="ru" id="ab__am_install_addon">Установить модуль</item>
+<item lang="uk" id="ab__am_install_addon">Встановити додаток</item>
+<item lang="en" id="ab__am_install_addon">Install addon</item>
+<item lang="ru" id="ab__am_install_code">Код лицензии модуля</item>
+<item lang="uk" id="ab__am_install_code">Код ліцензії додатка</item>
+<item lang="en" id="ab__am_install_code">The code addon license</item>
+<item lang="ru" id="ab__am_install_code_tooltip"><![CDATA[Формат кода:<br>ABA-xxxxxxxxxxxxxxxxxxxxx]]></item>
+<item lang="uk" id="ab__am_install_code_tooltip"><![CDATA[Формат коду:<br>ABA-xxxxxxxxxxxxxxxxxxxxx]]></item>
+<item lang="en" id="ab__am_install_code_tooltip"><![CDATA[Code format:<br>ABA-xxxxxxxxxxxxxxxxxxxxx]]></item>
+<item lang="ru" id="ab__am_install_info">После покупки вам должно было прийти письмо с кодами лицензий на каждый приобретенный модуль. Для установки/обновления модуля введите в соответствующее поле код лицензии модуля и нажмите кнопку [Установить модуль]. Любые вопросы, пожелания или замечания по модулям AlexBranding вы можете написать нам на почту info@alexbranding.com</item>
+<item lang="uk" id="ab__am_install_info">Після купівлі вам повинен був прийти лист з кодами ліцензій на кожен придбаний додаток. Для встановлення/оновлення додатка введіть у відповідне поле код ліцензії модуля і натисніть кнопку [Встановити модуль]. Будь-які запитання, побажання або зауваження по модулях AlexBranding ви можете написати нам на пошту info@alexbranding.com</item>
+<item lang="en" id="ab__am_install_info">After purchase you should have come with a letter code for each license purchased addon. To install/update the one enter in the appropriate field code addon license and click button [Install addon]. Any questions, suggestions or comments on the addons by AlexBranding team you can write to us - info@alexbranding.com</item>
+<item lang="ru" id="ab__am_price">Цена</item>
+<item lang="uk" id="ab__am_price">Ціна</item>
+<item lang="en" id="ab__am_price">Price</item>
+<item lang="ru" id="ab__am_rating">Рейтинг</item>
+<item lang="uk" id="ab__am_rating">Рейтинг</item>
+<item lang="en" id="ab__am_rating">Rating</item>
+<item lang="ru" id="ab__am_to_buy">Купить</item>
+<item lang="uk" id="ab__am_to_buy">Придбати</item>
+<item lang="en" id="ab__am_to_buy">Buy</item>
+<item lang="ru" id="ab__am_compatible">Совместимость</item>
+<item lang="uk" id="ab__am_compatible">Сумісність</item>
+<item lang="en" id="ab__am_compatible">Compatible</item>
+<item lang="ru" id="ab__am_compatible_with_your_store">Совместим с вашим магазином</item>
+<item lang="uk" id="ab__am_compatible_with_your_store">Сумісний з вашим магазином</item>
+<item lang="en" id="ab__am_compatible_with_your_store">Compatible with your store</item>
+<item lang="ru" id="ab__am_no">нет</item>
+<item lang="uk" id="ab__am_no">ні</item>
+<item lang="en" id="ab__am_no">no</item>
+<item lang="ru" id="ab__am_yes">да</item>
+<item lang="uk" id="ab__am_yes">так</item>
+<item lang="en" id="ab__am_yes">yes</item>
+<item lang="ru" id="ab__am_multiple_store">Мутивитринность</item>
+<item lang="uk" id="ab__am_multiple_store">Декілька вітрин</item>
+<item lang="en" id="ab__am_multiple_store">Multiple store</item>
+<item lang="ru" id="ab__am_supported_languages">Поддерживаемые языки</item>
+<item lang="uk" id="ab__am_supported_languages">Мови</item>
+<item lang="en" id="ab__am_supported_languages">Supported languages</item>
+<item lang="ru" id="ab__am_reviews">Отзывы</item>
+<item lang="uk" id="ab__am_reviews">Відгуки</item>
+<item lang="en" id="ab__am_reviews">Reviews</item>
+<item lang="ru" id="ab__am_already_installed">Уже установлен</item>
+<item lang="uk" id="ab__am_already_installed">Уже встановлено</item>
+<item lang="en" id="ab__am_already_installed">Already installed</item>
+<item lang="ru" id="ab__am_no_data">Нет данных</item>
+<item lang="uk" id="ab__am_no_data">Немає даних</item>
+<item lang="en" id="ab__am_no_data">No data</item>
+<item lang="ru" id="ab__am_from">от</item>
+<item lang="uk" id="ab__am_from">від</item>
+<item lang="en" id="ab__am_from">from</item>
+<item lang="ru" id="ab__am_subscribe_to_updates_has_expired">Подписка на обновления истекла</item>
+<item lang="uk" id="ab__am_subscribe_to_updates_has_expired">Підписка на оновлення минула</item>
+<item lang="en" id="ab__am_subscribe_to_updates_has_expired">Subscribe to updates has expired</item>
+<item lang="ru" id="ab__am_updates_are_available">Обновления доступны до</item>
+<item lang="uk" id="ab__am_updates_are_available">Оновлення доступні до</item>
+<item lang="en" id="ab__am_updates_are_available">Updates are available to</item>
+</language_variables>
+<translations>
+<item for="name" lang="ru">AB: Addons Менеджер от команды AlexBranding</item>
+<item for="name" lang="uk">AB: Addons Менеджер від команди AlexBranding</item>
+<item for="description" lang="ru">Управление модулями от команды AlexBranding. Установка модулей и проверка обновлений, а также можете ознакомиться с новинками AlexBranding. Для работы модулей от команды AlexBranding этот модуль должен быть постоянно включен.</item>
+<item for="description" lang="uk">Керування додатками від AlexBranding. Встановлення та перевірка оновлень додатків, а також можете ознайомитися з новинками від AlexBranding. Для роботи додатків від команди AlexBranding цей модуль повинен бути постійно увімкненый.</item>
+</translations>
+<functions><item>fn_ab__am</item></functions>
+</addon>

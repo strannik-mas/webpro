@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<addon scheme="3.0" edition_type="ROOT,ULT:VENDOR">
+<id>ab__seo_filters</id>
+<version>3.1</version>
+<priority>2016</priority>
+<position>0</position>
+<status>active</status>
+<default_language>en</default_language>
+<authors>
+<author>
+<name>AlexBranding</name>
+<email>info@alexbranding.com</email>
+<url>https://alexbranding.com</url>
+</author>
+</authors>
+<supplier>AlexBranding</supplier>
+<supplier_link>https://cs-cart.alexbranding.com</supplier_link>
+<compatibility>
+<core_version><min>4.3.1</min></core_version>
+</compatibility>
+<settings edition_type="ROOT,ULT:VENDOR">
+<sections>
+<section id="settings" edition_type="ROOT,ULT:VENDOR">
+<items>
+<item id="amount_breadcrumbs_in_product">
+<type>selectbox</type>
+<default_value>3</default_value>
+<variants>
+<item id="0"></item>
+<item id="1"></item>
+<item id="2"></item>
+<item id="3"></item>
+<item id="4"></item>
+<item id="5"></item>
+</variants>
+</item>
+<item id="cron_key"><type>input</type><default_value>c6v0h8uf2s</default_value></item>
+<item id="max_filters">
+<type>selectbox</type>
+<default_value>4</default_value>
+<variants>
+<item id="0"></item>
+<item id="1"></item>
+<item id="2"></item>
+<item id="3"></item>
+<item id="4"></item>
+<item id="5"></item>
+</variants>
+</item>
+<item id="max_variants">
+<type>selectbox</type>
+<default_value>3</default_value>
+<variants>
+<item id="0"></item>
+<item id="1"></item>
+<item id="2"></item>
+<item id="3"></item>
+<item id="4"></item>
+<item id="5"></item>
+</variants>
+</item>
+<item id="add_to_sitemap">
+<type>selectbox</type>
+<default_value>fixed</default_value>
+<variants>
+<item id="none"></item>
+<item id="fixed"></item>
+<item id="unfixed"></item>
+<item id="all"></item>
+</variants>
+</item>
+<item id="hide_description">
+<type>selectbox</type>
+<default_value>300</default_value>
+<variants>
+<item id="disabled"></item>
+<item id="150"></item>
+<item id="200"></item>
+<item id="250"></item>
+<item id="300"></item>
+<item id="350"></item>
+<item id="400"></item>
+<item id="450"></item>
+<item id="500"></item>
+<item id="550"></item>
+<item id="600"></item>
+<item id="650"></item>
+<item id="700"></item>
+<item id="750"></item>
+<item id="800"></item>
+<item id="850"></item>
+</variants>
+</item>
+<item id="code"><type>hidden</type><default_value>ABA-XtkALJNHhzzTNJzZ1VLRl</default_value></item>
+<item id="build"><type>hidden</type><default_value>108</default_value></item>
+</items>
+</section>
+</sections>
+</settings>
+<queries>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__sf_names (
+sf_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+category_id int(10) unsigned NOT NULL,
+features_hash varchar(100) NOT NULL,
+fixed char(1) NOT NULL DEFAULT 'U',
+PRIMARY KEY (sf_id),
+UNIQUE KEY feature_hash (features_hash,category_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</item>
+<item>
+UPDATE ?:ab__sf_names SET fixed = 'F' WHERE fixed = 'Y';
+</item>
+<item>
+UPDATE ?:ab__sf_names SET fixed = 'U' WHERE fixed = 'N';
+</item>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__sf_name_descriptions (
+sf_id int(11) unsigned NOT NULL DEFAULT '0',
+lang_code char(2) NOT NULL DEFAULT '',
+name varchar(255) NOT NULL DEFAULT '',
+description mediumtext,
+meta_keywords varchar(255) NOT NULL DEFAULT '',
+meta_description varchar(255) NOT NULL DEFAULT '',
+page_title varchar(255) NOT NULL DEFAULT '',
+tag_h1 varchar(255) NOT NULL DEFAULT '',
+breadcrumb varchar(255) NOT NULL,
+product_breadcrumb varchar(255) NOT NULL,
+PRIMARY KEY (sf_id,lang_code),
+KEY name__lang_code (name,lang_code)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</item>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__sf_rules (
+rule_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+feature_id text NOT NULL,
+categories text NOT NULL,
+subcats char(1) NOT NULL DEFAULT 'Y',
+position int(11) unsigned NOT NULL,
+fixed char(1) NOT NULL DEFAULT 'U',
+status char(1) NOT NULL DEFAULT 'D',
+generated_categories enum('by_all_filter_categories','by_non_empty_filter_categories') NOT NULL DEFAULT 'by_all_filter_categories',
+PRIMARY KEY (rule_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</item>
+<item>
+<!-- Change type of "feature_id" from old versions -->
+ALTER TABLE ?:ab__sf_rules CHANGE feature_id feature_id TEXT;
+</item>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__sf_rule_descriptions (
+rule_id int(11) unsigned NOT NULL DEFAULT '0',
+lang_code char(2) NOT NULL DEFAULT '',
+meta_keywords varchar(255) NOT NULL DEFAULT '',
+meta_description varchar(255) NOT NULL DEFAULT '',
+page_title varchar(255) NOT NULL DEFAULT '',
+tag_h1 varchar(255) NOT NULL DEFAULT '',
+breadcrumb varchar(255) NOT NULL,
+product_breadcrumb varchar(255) NOT NULL,
+PRIMARY KEY (rule_id,lang_code)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</item>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__sf_patterns (
+pattern varchar(255) NOT NULL DEFAULT '',
+lang_code char(2) NOT NULL DEFAULT '',
+value varchar(1000) NOT NULL DEFAULT '',
+PRIMARY KEY (pattern,lang_code)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</item>
+</queries>
+<functions>
+<item for="install">fn_ab__sf_install</item>
+</functions>
+</addon>

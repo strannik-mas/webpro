@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>sd_loyalty_program</id>
+    <version>4.3.0.2</version>
+    <commit>aa2a8f79a0ba</commit>
+    <priority>500</priority>
+    <position>1</position>
+    <status>active</status>
+    <default_language>en</default_language>
+    <supplier>Simtech Development</supplier>
+    <supplier_link>http://www.simtechdev.com</supplier_link>
+    <compatibility>
+        <core_version>
+            <min>4.3.1</min>
+        </core_version>
+        <core_edition>
+            ULTIMATE,MULTIVENDOR
+        </core_edition>
+    </compatibility>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="information">
+                        <type>header</type>
+                    </item>
+                    <item id="loyalty_program_page">
+                        <type>info</type>
+                        <handler>fn_sd_loyalty_program_loyalty_program_page_info</handler>
+                    </item>
+                    <item id="general_settings">
+                        <type>header</type>
+                    </item>
+                    <item id="order_status">
+                       <type>selectbox</type>
+                       <default_value>C</default_value>
+                   </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:loyalty_program;</item>
+        <item>DROP TABLE IF EXISTS ?:loyalty_program_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:loyalty_program_images;</item>
+        <item>
+            CREATE TABLE `?:loyalty_program` (
+                `card_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `usergroup_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` int(11) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'A',
+                `company_id` int(11) unsigned NOT NULL DEFAULT '0',
+                PRIMARY KEY  (`card_id`),
+                KEY `status` (`status`),
+                KEY `company_id` (`company_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:loyalty_program_descriptions` (
+                `card_id` mediumint(8) unsigned NOT NULL default 0,
+                `name` varchar(255) NOT NULL default '',
+                `description` mediumtext,
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`card_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:loyalty_program_images` (
+            `card_image_id` mediumint(8) unsigned NOT NULL auto_increment,
+            `card_id` mediumint(8) unsigned NOT NULL default 0,
+            `lang_code` char(2) NOT NULL default '',
+            PRIMARY KEY  (`card_image_id`),
+            UNIQUE KEY  `card` (`card_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>ALTER TABLE `?:usergroup_links` ADD `cumulative` char(1) NOT NULL default 'N'</item>
+        <item for="uninstall">ALTER TABLE  `?:usergroup_links` DROP `cumulative`</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:loyalty_program;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:loyalty_program_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:loyalty_program_images;</item>
+    </queries>
+</addon>
