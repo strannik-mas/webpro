@@ -1,0 +1,234 @@
+// Класс UserInfo
+function UserInfo(log, pass)
+{
+	this.login = log;
+	this.password = pass;
+}
+
+// Класс Билет сессии
+function Ticket(t)
+{
+	this.access_token = "";
+	this.expires_in = 0;
+	this.token_type = "";
+	this.scope = null;
+	this.refresh_token = "";
+}
+//класс записи чата
+function Record(author, message, rec, s)
+{
+	this.author = author;
+	this.message = message;
+	this.recipient = rec;
+	this.status = s;
+}
+
+var checkTimer;
+var checkTimer2;
+var intervalRefresh;
+var checkInterval = 10000;
+var checkInterval2 = 20000;
+
+
+
+// Дата и время последнего изменения гостевой книги,
+// по умолчанию - дата в прошлом
+var lastUpdate = new Date("01/01/1900");
+var lastModified = getLastModified();
+var dMess = 5;					//count of messages which appear when user click the link "showMore"
+var beginMess = 10;				//Initial quantity of messages in chat
+function addRecord(){
+	// Элементы управления
+	var txtMessage = document.getElementById("txtMessage");
+	//var selectedUser = document.getElementById("recipients");
+	//select value of selected option
+//	console.log(selectedUser.options[selectedUser.selectedIndex].value);
+
+	
+	// Проверка заполнения элементов
+	if (txtMessage.value == "")
+	{
+		alert("You must write a message!");
+		return;
+	}
+	ticket = JSON.parse(sessionStorage.getItem('ticket'));
+	// Создание объъекта записи
+	var record = new Record(ticket.access_token, txtMessage.value, 0 /*selectedUser.options[selectedUser.selectedIndex].value*/, 0);
+
+	// Сериализация в JSON
+	var jsonData = JSON.stringify(record);
+//	console.log(jsonData);
+	// Передача данных
+	var reqChat = getXmlHttpRequest();
+	reqChat.onreadystatechange = function()
+		{
+			if (reqChat.readyState != 4) return;
+			// Завершение передачи... Сброс таймера и показ сообщения
+			window.clearTimeout(checkTimer);
+			txtMessage.value = "";
+			checkUpdates();
+		}
+	reqChat.open("POST", "ops/chat/addrecord.php", true);
+	reqChat.setRequestHeader("Content-Type", "text/plain");
+//	reqChat.setRequestHeader("Content-Length", jsonData.length);			
+	reqChat.send(jsonData);				
+}
+
+function getLastModified()
+{
+	// Выполним запрос HEAD к скрипту ...
+	var reqChat = getXmlHttpRequest();
+	var date;
+	reqChat.open("HEAD", "ops/chat/getlastmsgs.php", false);
+	reqChat.onload = function(e) {
+		if (this.readyState == 4) {
+			date = new Date(reqChat.getResponseHeader("Last-Modified"));
+			}		
+		};
+	reqChat.send(null);
+	
+	// Создадим объект Date на основе ответа Last-Modified
+	return date;
+}
+
+
+
+function checkUpdates()
+{	
+	//var selectedUser = document.getElementById("recipients");
+//	console.log(lastModified);
+//	console.log(lastUpdate);
+	if (lastUpdate < lastModified)
+	{
+		//console.log(sessionStorage.getItem('ticket')); 
+		// Запрос новых данных из чата
+		newrequest('showResords', $('#divResult'), 'chat');		
+	}
+	// Таймер на следующую проверку
+	checkTimer = window.setTimeout("checkUpdates()", checkInterval);
+}
+
+function showMessages(recJson, flag){
+
+//	console.log(recJson);
+	try {
+		var records = jQuery.parseJSON(recJson);
+		console.log(records);
+		// Элемент для отображения
+		var divResult = document.getElementById("divResult");
+		if (divResult != null) {
+			//link for More...
+			var aMore = createNewElement("a", 'Показать еще...');
+			aMore.setAttribute("onclick", "showMessages(" + JSON.stringify(recJson) + ", " + false + ")");
+
+			//console.log(records.length);
+			// Удаление старых записей
+			while (divResult.hasChildNodes())
+				divResult.removeChild(divResult.lastChild);
+			// Отображение записей чата
+			for (var i = 0; i < records.length; i++)
+			{
+
+				if (i >= beginMess) {
+					$(divResult).prepend($(aMore));
+					continue;
+				}
+
+				// Элемент для размещения записи
+				var divRecord = document.createElement("div");
+				divRecord.className = "chat-inner";
+				var divRecordRow = document.createElement("div");
+				divRecordRow.className = "chat-item row";
+				var divUserPhoto = document.createElement("div");
+				divUserPhoto.className = "chat-user";
+				if (records[i].path && records[i].filename)
+					divUserPhoto.innerHTML = "<a href='#'><span class='img-inner'><img src='"
+							+ "/" + records[i].path + "/"
+							+ records[i].filename + "' alt='user' class='img-circle img-responsive'></span></a>";
+				else
+					divUserPhoto.innerHTML = "<a href='#'><span class='img-inner'><img src='"
+							+ "ops/chat/img/thumb_170_170_c_noimg.png" + "' alt='user' class='img-circle img-responsive'></span></a>";
+				divRecordRow.appendChild(divUserPhoto);
+
+				//divResult.appendChild(divRecord);
+				$(divResult).prepend($(divRecord));
+
+				//div-container for message
+				var divMessage = document.createElement("div");
+				divMessage.className = "chat-message";
+				var divMessInfo = document.createElement("div");
+				divMessInfo.className = "chat-message-info";
+				// Ссылка на автора 
+				var aAuthor = createNewElement("a", records[i].author);
+				aAuthor.className = "user-name";
+				divMessInfo.appendChild(aAuthor);
+
+				//message date 
+				var spanDateContainer = document.createElement("span");
+				spanDateContainer.className = "pull-right";
+				spanDateContainer.innerHTML = "<a href='#'><i class='fa fa-exclamation-circle' aria-hidden='true'></i></a>";
+				var spanMessData = createNewElement("span", records[i].date);
+				spanMessData.className = "data";
+
+				spanDateContainer.insertBefore(spanMessData, spanDateContainer.firstChild);
+
+				divMessInfo.appendChild(spanDateContainer);
+				divMessage.appendChild(divMessInfo);
+				// Текст сообщения
+				var pMessage = createNewElement("p", records[i].message);
+				divMessage.appendChild(pMessage);
+
+				//comments
+				var divCommentsContainer = document.createElement("div");
+				divCommentsContainer.className = "chat-reply row";
+				var divRightBlock = document.createElement("div");
+				divRightBlock.className = "pull-right";
+				if(records[i].curuser)
+					divRightBlock.innerHTML = '<a href="" class="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i></span></a><a href="#" class="trash"><span><i class="fa fa-trash" aria-hidden="true"></i></span></a>';
+				else divRightBlock.innerHTML = "<a href='' class='reply'><span><i class='fa fa-reply' aria-hidden='true'></i></span></a><a href='' class='commenting'><span><i class='fa fa-commenting' aria-hidden='true'></i></span></a>";
+
+
+				divCommentsContainer.appendChild(divRightBlock);
+				divMessage.appendChild(divCommentsContainer);
+				divRecordRow.appendChild(divMessage);
+				divRecord.appendChild(divRecordRow);
+			}
+		}
+
+		if (flag) {
+			$('#scrollbar').mCustomScrollbar("scrollTo", "bottom", {
+				scrollEasing: "easeOut"
+			});
+		}
+		beginMess += dMess;
+		// Время  последнего отображения 
+		lastUpdate = getLastModified();
+		
+		//open minichat
+		$('.fa-commenting').each(function(index, element){
+			$(element).on(click, function(e){
+				alert(2);
+				e.preventDefault();
+				$("#minichatform").addClass("open");
+				//автопрокрутка вниз
+				$('#scrollbarminichat').mCustomScrollbar("scrollTo", "bottom", {
+					scrollEasing: "easeOut"
+				});			
+				return false;
+			});
+		});
+	}catch (exception) {
+		alert(recJson);
+	}
+
+	
+}
+
+window.onload = function()
+{
+//	console.log(document.getElementById("divResult"));
+	if(document.getElementById("divResult") != null){
+		checkUpdates();		
+	}
+};
+

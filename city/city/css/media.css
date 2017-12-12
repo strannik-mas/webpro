@@ -1,0 +1,509 @@
+@media screen and (max-width: 1200px) {
+  .notice h1 .user-online {
+    margin-left: 53px;
+  }
+  .textarea-inner .textarea {
+    width: 100%;
+    float: none;
+    padding: 5px;
+  }
+  .textarea-inner .textarea textarea {
+    max-width: 100%;
+  }
+  .textarea-inner .textarea-hint {
+    width: 100%;
+    float: none;
+  }
+  .info a {
+    text-align: center;
+  }
+  .info a span {
+    float: none;
+  }
+  .info a strong {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+  footer .copy {
+    width: 240px;
+  }
+  .footer-list {
+    width: auto;
+    display: block;
+    float: none;
+  }
+  .nav .nav-top {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .nav-list {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .product-view-desc {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .map-selected .accident-map iframe {
+    height: 418px;
+  }
+  .map .add-notice {
+    display: inline-block;
+    height: 54px;
+    max-width: 200px;
+    margin: 0;
+    padding: 0 10px;
+    background-size: cover;
+  }
+  .map .add-notice a {
+    display: table;
+    width: 100%;
+  }
+  .map .add-notice i {
+    display: table-cell;
+    padding-top: 0;
+    width: 37px;
+    height: 53px;
+  }
+  .map .add-notice i img {
+    max-width: 100%;
+    height: auto;
+  }
+  .map .add-notice span {
+    display: table-cell;
+  }
+  .notice h1 .user-online {
+    margin-left: 62px;
+  }
+  .notice-bottom .pull-right .more {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .price strong {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .notice-desc h2 {
+    display: block;
+    width: 100%;
+  }
+  .notice-bottom {
+    position: static;
+  }
+  .price {
+    float: none !important;
+    display: block;
+  }
+  .entrance {
+    padding-bottom: 70px;
+  }
+  .info-inner {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .info a {
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+  }
+  .info a span {
+    float: left;
+  }
+  .info a strong {
+    float: left;
+    display: block;
+    margin-left: 29px;
+  }
+  footer .copy {
+    float: none;
+    width: 100%;
+  }
+  .footer-list {
+    width: 100%;
+    padding-left: 20px;
+  }
+  .footer-list ul {
+    margin-left: 0px;
+  }
+  .notice-search .button button {
+    float: right;
+  }
+}
+@media screen and (max-width: 767px) {
+  .map .button button {
+    margin-top: 15px;
+  }
+  .accident-desc,
+  .accident-info {
+    margin: 20px 0;
+    height: auto;
+  }
+  .accident-desc .user-info,
+  .accident-info .more-inner {
+    position: static;
+    margin: 20px 0;
+  }
+  .user-main-info {
+    margin-top: 40px;
+  }
+  .selection-group,
+  .caption {
+    width: 100%;
+    display: block;
+  }
+  .selection-group label,
+  .caption label {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .add-tel {
+    display: block;
+    margin: 15px 0;
+  }
+  .buttons-submit {
+    margin: 20px 0;
+  }
+  .buttons-submit .more {
+    margin-bottom: 15px;
+    margin-right: 10px;
+  }
+  .user-list-info .more-inner {
+    text-align: left;
+  }
+  .user-cabinet .chat {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 680px) {
+  .notice-link-inner {
+    display: block;
+    width: 100%;
+  }
+  .notice-img,
+  .notice-desc {
+    display: table-row;
+  }
+  .notice-desc h2 {
+    margin-top: 10px;
+  }
+  .nav-top .profile {
+    display: block;
+  }
+  .nav-top .profile .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+  .nav-list ul {
+    width: 100%;
+  }
+  .nav-list .profile {
+    display: none;
+  }
+  .nav-top {
+    display: table;
+  }
+  .nav-top .logo {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .nav-top .profile {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .nav-top .profile a span {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .form-add-choose .check-big {
+    display: inline-block;
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .buttons-submit .more {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    display: block;
+  }
+}
+@media screen and (max-width: 500px) {
+  .map-selected .accident-map iframe {
+    height: 250px;
+  }
+  .label-links a.dropdown-toggle {
+    display: block;
+    position: relative;
+    padding: 10px 0;
+  }
+  .label-links a.dropdown-toggle:hover {
+    color: #000000;
+  }
+  .label-links a.dropdown-toggle:before,
+  .label-links a.dropdown-toggle:after {
+    content: '';
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    background: url(../img/search.png) no-repeat 0% 50%;
+  }
+  .label-links a.dropdown-toggle:after {
+    content: ' ';
+    width: 19px;
+    height: 16px;
+    top: 12px;
+    right: 0px;
+    background: url(../img/arrow.png) no-repeat 0% 50%;
+  }
+  .archive-l {
+    display: none;
+  }
+  .label-archive {
+    display: table-cell;
+    width: 50%;
+  }
+  .map .add-notice {
+    width: 50%;
+    display: table-cell;
+    max-width: 500px;
+  }
+  .mob-notice {
+    display: table;
+    width: 100%;
+    padding: 0;
+  }
+  .map .notice-search {
+    margin: 0;
+  }
+  .accident-desc,
+  .accident-info {
+    float: none;
+    width: 100%;
+  }
+  .cabinet-chat {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .user-page-list .notice-search {
+    margin: 5px 0;
+  }
+  .user-list-info {
+    overflow: initial;
+    padding: 0;
+  }
+  .user-list-photo {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+  }
+  .user-main-info .login-button {
+    margin-bottom: 15px;
+  }
+  .user-main-info h4 {
+    text-align: center;
+  }
+  .notice h1 .user-online {
+    margin: 10px 0;
+    display: block;
+  }
+  .form-tel input {
+    min-width: 0;
+  }
+  .form-add {
+    padding: 15px;
+  }
+  .notice-info {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .notice-search {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .check-min,
+  .notice-search .button {
+    float: none;
+    width: 100%;
+  }
+  .notice {
+    overflow: hidden;
+    padding: 5px 7px;
+  }
+  .notice h1 {
+    display: inline-block;
+  }
+  .who {
+    display: inline-block;
+  }
+  .chat {
+    margin-top: 10px;
+  }
+  .notice h1 {
+    margin-bottom: 0;
+  }
+  .nav .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .nav .nav-inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .nav-top {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .create-message,
+  .chat,
+  .notice-add {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .chat-inner {
+    padding-left: 15px;
+  }
+  .location {
+    display: none;
+  }
+  .create-message .bg {
+    padding: 5px 0;
+  }
+  .create-message-inner {
+    position: relative;
+  }
+  .create-message-inner h2 {
+    display: block;
+    text-align: center;
+  }
+  .message-attached {
+    position: absolute;
+    bottom: 40px;
+    left: 5px;
+  }
+  .message-textarea {
+    padding: 0 10px;
+  }
+  .chat-nav {
+    margin-bottom: 10px;
+  }
+  .chat-message-info {
+    position: relative;
+  }
+  .chat-inner .fa.fa-exclamation-circle {
+    position: absolute;
+    top: 2px;
+    right: 0;
+  }
+  .chat-inner .data {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .chat-item {
+    display: block;
+    padding: 10px 0;
+  }
+  .chat-message-info {
+    min-height: 75px;
+    margin-bottom: 0;
+  }
+  .chat-message {
+    display: block;
+  }
+  .chat-user {
+    display: block;
+    padding-right: 30px;
+    float: left;
+  }
+  .chat-message-info span {
+    display: block;
+    float: none !important;
+  }
+}
+@media screen and (max-width: 410px) {
+  .attached-img .col-xs-4 {
+    padding: 0 5px;
+  }
+  .attached-img .attached-img-inner .delete {
+    bottom: 1px;
+    right: 1px;
+  }
+  .plagination ul li a {
+    padding: 10px;
+  }
+  .notice-link {
+    margin-left: 0;
+  }
+  .login a.login-button,
+  .your-city div {
+    width: 100%;
+    min-width: 280px;
+  }
+  .login a.login-button {
+    background-size: 10%;
+  }
+  .info a {
+    text-align: center;
+  }
+  .info a span {
+    float: none;
+  }
+  .info a strong {
+    float: none;
+    margin: 0 auto;
+    display: block;
+  }
+  .footer-list ul li {
+    display: block;
+    margin-right: 0;
+  }
+  .form-add-choose .price-choose span {
+    margin-right: 0;
+  }
+  .form-add-choose .price-choose .form-control {
+    max-width: 150px;
+  }
+}
+@media screen and (max-width: 365px) {
+  .user-info {
+    display: block;
+    width: 100%;
+  }
+  .product-view-desc .complain {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin: 0;
+  }
+  .product-view-desc .complain span {
+    display: none;
+  }
+}
+@media screen and (max-width: 350px) {
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+  .chat-nav a {
+    max-width: 155px;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+    min-width: 0;
+  }
+  .nav-list ul {
+    display: table;
+  }
+  .nav-list ul li {
+    display: table-cell;
+    padding: 0 15px 0 20px;
+  }
+}

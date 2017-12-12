@@ -1,0 +1,186 @@
+#t1 {
+    margin: 10px 0 10px;
+}
+thead td {
+    text-align: right;
+}
+th{
+    position: relative;
+}
+th span:hover {
+    cursor: pointer;
+}
+th .ar_up {
+    position: absolute;
+    top: 0;
+    right:0;
+}
+th .ar_down {
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+td a.del_link{    
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../img/delete.jpg) no-repeat;
+}
+/* Панель выбора таблиц */
+#tableSelect {
+	min-height: 80px;
+	padding: 15px;
+}
+#f1{
+	display: block;
+	margin-top: 20px;
+}
+
+/*for pagination*/
+.pagination{
+    padding: 2px;
+}
+.pagination ul{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+}
+.pagination li{
+    list-style-type: none;
+    display: inline;
+    padding-bottom: 1px;
+}
+.pagination a, .pagination a:visited{
+    padding: 0 5px;
+    border: 1px solid #9aafe5;
+    text-decoration: none;
+    color: #2e6ab1;
+}
+.pagination a:hover, .pagination a:active{
+        background-color: #3071a9;
+    border-color: #285e8e;
+    color: #fff;
+}
+.pagination a.prevnext{
+    font-weight: bold;
+    margin:5px;
+}
+.page_number {
+    border: 1px solid #9aafe5;
+    color: #2e6ab1;
+    padding:5px;
+    text-align: center;
+    width: 20px;
+}
+.page-number {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    color: #2e6ab1;
+    margin-right: 0.5em;
+}
+
+li a.active {
+    background: #428bca;
+    color: #fff;
+}
+.tableeditor-page {
+	padding: 20px 15px;
+}
+legend {
+	font-weight: bold;
+}
+.nice-select {
+	width: 100%;
+	max-width: 320px;
+	float: none;
+}
+.nice-select .list {
+	max-height: 200px;
+	overflow-y: auto;
+}
+fieldset {
+	margin: 15px 0;
+	padding: 0 15px;
+}
+label {
+	display: block;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-control {
+	display: block;
+    width: 100%;
+    max-width: 320px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-button:hover {
+    color: #ffffff;
+    background-color: #3071a9;
+    border-color: #285e8e;
+}
+.form-button{
+	display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.tableselect {
+	background-color: rgba(204, 204, 204, 0.14);
+}
+.tableselect label {
+	font-size: 25px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+.pagination input {
+	max-width: 50px;
+	text-align: center;
+	border: 1px solid #cccccc;
+    border-radius: 4px;
+    height: 34px;
+    padding: 6px 12px;
+}
+table {
+	max-width: 1170px;
+	width: 100%;
+	overflow-x: auto;
+}

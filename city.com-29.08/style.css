@@ -1,0 +1,118 @@
+#t1 {
+    margin: 10px 0 10px;
+}
+thead td {
+    text-align: right;
+}
+th{
+    position: relative;
+}
+th span:hover {
+    cursor: pointer;
+}
+th #ar_up {
+    position: absolute;
+    top: 0;
+    right:0;
+}
+th #ar_down {
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+td a.del_link{    
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(delete.jpg) no-repeat;
+}
+
+/* Оформление блоков на странице */
+.block
+{
+	border: 1px solid navy;
+}
+
+.block h2
+{
+	margin: 0px;
+	padding: 2px;
+	font-size: small;
+	font-family: sans-serif;
+	text-align: center;
+	background-color: navy;
+	color: white;
+
+}
+
+/* Форма входа */
+#frmLogin
+{
+	position: absolute;
+	top: 10%;
+	left: 30%;
+	width: 15em;
+	background-color: white;
+}
+
+#frmLogin div
+{
+	margin: 1ex;
+	padding-bottom: 1em;
+}
+
+#frmLogin div label
+{
+	display: block;
+	float: left;
+	width: 4em;
+}
+
+/* Кнопки */
+#frmLogin button, #divUsers button
+{
+	display: block;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/* Сообщение */
+#divMessage
+{
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	width: 12em;
+	background-color: white;
+	display: none;
+}
+
+#divMessage h2
+{
+	background-color: red;
+}
+
+/* Панель списка пользователей */
+#divUsers
+{
+	float: right;
+	width: 50%;
+}
+
+/*map*/
+#map {
+    height: 400px;
+    width: 100%;
+}
+#map :hover{
+    cursor: crosshair;
+}
+
+/*notify*/
+
+.selectDiv {
+    background: #ccc;
+    float: left;
+    width: 30%;
+}

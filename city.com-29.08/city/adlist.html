@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Add list</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/nice-select.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/media.css" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="main">
+	<div class="nav">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="nav-inner">
+						<div class="nav-top dropdown">
+							<div class="logo">
+								<img src="img/logo-black.png" alt="logo" />
+							</div>
+							<div class="profile ">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-messages"><img src="img/user.png" alt="user" class="img-circle img-responsive"></span></a>
+								<div class="dropdown-menu">
+									<ul>
+										<li><a href="#">Личные данные</a></li>
+										<li><a href="#">Уведомления (4)</a></li>
+										<li><a href="#">Сообщения (6)</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="nav-list">
+							<ul>
+								<li><a href="#">Чат</a></li>
+								<li><a href="#">Карта<span><strong>SOS</strong></span></a></li>
+								<li><a href="#">Объявления</a></li>
+							</ul>
+							<div class="pull-right profile dropdown">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-messages"><img src="img/user.png" alt="user" class="img-circle img-responsive"></span>Личный кабинет </a>
+								<div class="dropdown-menu">
+									<ul>
+										<li><a href="#">Личные данные</a></li>
+										<li><a href="#">Уведомления (4)</a></li>
+										<li><a href="#">Сообщения (6)</a></li>
+									</ul>
+								</div>
+								<a href="#">Выйти Х</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="location">
+						<a href="#">Главна</a>
+						<a href="#">Объявления</a>
+						<span>город Москва</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="notice">
+						<h1><img src="img/notice.png" alt="notice"/>Объявления</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main-content">
+		<div class="container-fluid">
+				<div class="container">
+					<div class="row">
+					<div class="col-lg-9 col-md-9 notice-info">
+						<div class="notice-search row">
+							<form>
+								<div class="form-group-inner col-lg-8 col-md-7">
+									<div class="form-group search-inner">
+										<a href="#" class="fa fa-search"></a>
+										<input name="search" placeholder="Найти по названию" required="" type="search" class="form-control">
+									</div>
+									<div class="row">
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<select>
+												 <option>Рубрика</option>
+												 <option>2</option>
+												 <option>3</option>
+												 <option>4</option>
+												 <option>5</option>
+											</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-6">
+											<input type="text" placeholder="Цена от" name="min-price" class="form-control">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-6">
+											<input type="text" placeholder="Цена до" name="max-price" class="form-control">
+										</div>	
+									</div>
+								</div>
+								<div class="form-group-inner col-lg-4 col-md-5">
+									<div class="check-big">
+										<div class="check">
+			                                <input id="check1" type="checkbox" name="check" value="check1">
+			                                <label for="check1">Подписаться на объявления</label>
+			                            </div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 check-min">
+											<div class="check">
+				                                <input id="check2" type="checkbox" name="check" value="check1">
+				                                <label for="check2">Только с фото</label>
+				                            </div>
+				                            <div class="check">
+				                                <input id="check3" type="checkbox" name="check" value="check1">
+				                                <label for="check3">Все города</label>
+				                            </div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 button">
+											<button type="submit">Найти <i href="#" class="fa fa-search"></i></button>
+										</div>
+										
+									</div>
+									
+								</div>
+			
+							</form>
+						</div>
+						<div class="notice-list">
+							<div class="notice-item">
+								<div class="notice-img">
+									<img src="img/notice-item.png" alt="notice" class="img-responsive"/>
+								</div>
+
+								<div class="notice-desc">
+									<h2>Автомагнитола Pioneer 1125 супердизайн большой экран пионер 1125</h2>
+									<span class="price pull-right"><strong>15000 Руб. </strong><strong>Торг</strong></span>
+									<div class="notice-bottom">
+										<div class="notice-link-inner">
+											<a href="#" class="notice-link">Автозапчасти и аксессуары </a>
+											<span class="point"></span>
+											<a href="#" class="notice-link">Аксессуары для авто</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="more">Подробнее</a>
+										</div>
+										<div class="data"><span>Вчера в 13:34</span></div>
+									</div>
+								</div>		
+							</div>
+							<div class="notice-item">
+								<div class="notice-img">
+									<img src="img/notice-item2.png" alt="notice" class="img-responsive"/>
+								</div>
+
+								<div class="notice-desc">
+									<h2>Автомагнитола Pioneer 1125 супердизайн большой экран пионер 1125</h2>
+									<span class="price pull-right"><strong>15000 Руб. </strong><strong>Торг</strong></span>
+									<div class="notice-bottom">
+										<div class="notice-link-inner">
+											<a href="#" class="notice-link">Автозапчасти и аксессуары </a>
+											<span class="point"></span>
+											<a href="#" class="notice-link">Аксессуары для авто</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="more">Подробнее</a>
+										</div>
+										<div class="data"><span>Вчера в 13:34</span></div>
+									</div>
+								</div>		
+							</div>
+
+							<div class="notice-item">
+								<div class="notice-img">
+									<img src="img/notice-item3.png" alt="notice" class="img-responsive"/>
+								</div>
+
+								<div class="notice-desc">
+									<h2>Автомагнитола Pioneer 1125 супердизайн большой экран пионер 1125</h2>
+									<span class="price pull-right"><strong>15000 Руб. </strong><strong>Торг</strong></span>
+									<div class="notice-bottom">
+										<div class="notice-link-inner">
+											<a href="#" class="notice-link">Автозапчасти и аксессуары </a>
+											<span class="point"></span>
+											<a href="#" class="notice-link">Аксессуары для авто</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="more">Подробнее</a>
+										</div>
+										<div class="data"><span>Вчера в 13:34</span></div>
+									</div>
+								</div>		
+							</div>
+
+							<div class="notice-item">
+								<div class="notice-img">
+									<img src="img/notice-item4.png" alt="notice" class="img-responsive"/>
+								</div>
+
+								<div class="notice-desc">
+									<h2>Автомагнитола Pioneer 1125 супердизайн большой экран пионер 1125</h2>
+									<span class="price pull-right"><strong>15000 Руб. </strong><strong>Торг</strong></span>
+									<div class="notice-bottom">
+										<div class="notice-link-inner">
+											<a href="#" class="notice-link">Автозапчасти и аксессуары </a>
+											<span class="point"></span>
+											<a href="#" class="notice-link">Аксессуары для авто</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="more">Подробнее</a>
+										</div>
+										<div class="data"><span>Вчера в 13:34</span></div>
+									</div>
+								</div>		
+							</div>
+
+							<div class="notice-item">
+								<div class="notice-img">
+									<img src="img/notice-item5.png" alt="notice" class="img-responsive"/>
+								</div>
+
+								<div class="notice-desc">
+									<h2>Автомагнитола Pioneer 1125 супердизайн большой экран пионер 1125</h2>
+									<span class="price pull-right"><strong>15000 Руб. </strong><strong>Торг</strong></span>
+									<div class="notice-bottom">
+										<div class="notice-link-inner">
+											<a href="#" class="notice-link">Автозапчасти и аксессуары </a>
+											<span class="point"></span>
+											<a href="#" class="notice-link">Аксессуары для авто</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="more">Подробнее</a>
+										</div>
+										<div class="data"><span>Вчера в 13:34</span></div>
+									</div>
+								</div>		
+							</div>
+							<div class="plagination">
+								<ul>
+									<li><a href="#" class="plag-arrows">&laquo;</a></li>
+									<li><a href="#" class="active">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#" class="plag-arrows">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-lg-3 col-md-3 sidebar">
+						<div class="add-notice">
+							<a href="#">
+								<img src="img/add-notice.png" alt="add" class="img-responsive"/>
+								<span>Добавить объявление</span>
+							</a>
+						</div>
+						<div class="banner">
+							<img src="img/banner.png" alt="banner" class="img-responsive" />
+						</div>
+						<div class="info">
+							<div class="info-inner">
+								<a href="#">
+									<span>
+										<i>
+											<img src="img/info-1.png" alt="logo"/>
+										</i>
+									</span>
+									<strong>Нужна помощь на дороге?</strong>
+								</a>
+							</div>
+							<div class="info-inner">
+								<a href="#">
+									<span>
+										<i>
+											<img src="img/info-2.png" alt="logo"/>
+										</i>
+									</span>
+									<strong>Где сейчас наряды ДПС?</strong>
+								</a>
+							</div>
+							<div class="info-inner">
+								<a href="#">
+									<span>
+										<i>
+											<img src="img/info-3.png" alt="logo"/>
+										</i>
+									</span>
+									<strong>Где произошли аварии?</strong>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+			
+
+
+<footer>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="copy">
+					<img src="img/mini-logo.png" alt="logo"/><span>© 2017.  Город Дорог. Все права защищены.</span>
+				</div>
+				<div class="footer-list">
+					<ul>
+						<li><a href="#">Чат</a></li>
+						<li><a href="#">Карта</a></li>
+						<li><a href="#">Объявления</a></li>
+						<li><a href="#">Пользовательское соглашение</a></li>
+						<li><a href="#">Помощь</a></li>
+						<li><a href="#">Сообщить об ошибке </a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>                          
+	</div>
+		
+</footer>
+
+<span class="btn-scroll-top">Наверх<i class="fa fa-long-arrow-up"></i></span>
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="js/chat2.js"></script>
+	<script type="text/javascript" src="./../xmlhttprequest.js"></script>
+
+	<title>Add ad</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="css/nice-select.css" />
+	<link href="css/fotorama.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/media.css" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="main">
+	<div class="nav">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="nav-inner">
+						<div class="nav-top dropdown">
+							<div class="logo">
+								<img src="img/logo-black.png" alt="logo" />
+							</div>
+							
+							<div class="profile ">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+									<span class="user-messages">
+										<img src="img/user.png" alt="user" class="img-circle img-responsive">
+									</span>
+								</a>
+								<div class="dropdown-menu">
+									<ul>
+										<li><a href="#">Личные данные</a></li>
+										<li><a href="#">Уведомления (4)</a></li>
+										<li><a href="#">Сообщения (6)</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+							
+						<div class="nav-list">
+							<ul>
+								<li><a href="#">Чат</a></li>
+								<li><a href="#">Карта<span><strong>SOS</strong></span></a></li>
+								<li><a href="#">Объявления</a></li>
+							</ul>
+							<div class="pull-right profile">
+					        	<span class="dropdown">
+					        	<!---->
+						        	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-messages"><img src="img/user.png" alt="user" class="img-circle img-responsive"></span>Личный кабинет </a>
+						        	<div class="dropdown-menu">
+								         <ul>
+									          <li><a href="#">Личные данные</a></li>
+									          <li><a href="#">Уведомления (4)</a></li>
+									          <li><a href="#">Сообщения (6)</a></li>
+								         </ul>
+							        </div>
+						       	</span>
+					        	<span class="dropdown">
+					        	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Войти Х</a>
+					        	<div class="dropdown-menu">
+						         	<form onsubmit="return false;">
+						          		<div class="form-group">
+						           			<input type="text" id="txtLogin" class="form-control" placeholder="Введите email">
+						            	</div>
+							            <div class="form-group">
+							         		  	<input type="password" id="txtPassword" class="form-control" placeholder="Введите пароль">
+							            </div>
+							            <div class="checkbox">
+							           		<label>
+							             		<input type="checkbox"> Запомнить
+							           		</label>
+							            </div>
+							            <button type="submit" class="btn btn-default" onclick="validateUser();">Войти</button>
+						         	</form>
+					        	</div>
+					       		</span>
+					       </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="location">
+						<a href="#">Главна</a>
+						<span>Чат Москвы</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main-content">
+		<div class="container-fluid">
+				<div class="container">
+					<div class="row">
+					<div class="col-lg-9 col-md-9 notice-add">
+						<div class="row">
+							<div class="notice">
+								<h1><img src="img/map.png" alt="logo"/>Город Москва</h1>
+								<span class="who">&laquo; Кто в чате?</span>
+							</div>
+							<div class="chat">
+								<div class="chat-nav">
+									<a href="#" class="chat-common">Общий чат</a>
+									<a href="#" class="chat-help">Помощь</a>
+								</div>
+								<div class="mCustomScrollbar">
+									<div  id="divResult"></div>		
+								</div>
+							</div>
+							<div class="create-message">
+								<div class="bg">
+									<div class="create-message-inner">
+										<form onsubmit="return false;">
+											<div class="message-function">
+												<h2>Отправить сообщнение</h2>
+												
+												<div class="pull-right message-attached">
+													<a href="#" class="clip">
+														<img src="img/clip.png" alt="clip" />
+													</a>
+													<a href="#" class="smile">
+														<img src="img/smile.png" alt="smile" />
+													</a>
+												</div>
+
+											</div>
+
+											<div class="message-textarea">
+												<textarea placeholder="Решил написать свою историю..." id="txtMessage"></textarea>
+											</div>
+											<div class="button">
+											<button type="submit" onclick="addRecord()">Отправить</button>
+										</div>
+										</form>
+											
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
+					
+					<div class="col-lg-3 col-md-3 sidebar">
+						<div class="banner">
+							<img src="img/banner.png" alt="banner" class="img-responsive" />
+						</div>
+						<div class="all-users" id="divUsers">
+							<h3>Пользователи</h3>
+							<p><span>18 369 online</span></p>
+
+							
+						</div>
+						
+						<div class="search-user">
+							<div class="form-group search-inner">
+								<a href="#" class="fa fa-search"></a>
+								<input name="search" placeholder="Найти пользователя" required="" type="search" class="form-control">
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+			
+
+
+<footer>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="copy">
+					<img src="img/mini-logo.png" alt="logo"/><span>© 2017.  Город Дорог. Все права защищены.</span>
+				</div>
+				<div class="footer-list">
+					<ul>
+						<li><a href="#">Чат</a></li>
+						<li><a href="#">Карта</a></li>
+						<li><a href="#">Объявления</a></li>
+						<li><a href="#">Пользовательское соглашение</a></li>
+						<li><a href="#">Помощь</a></li>
+						<li><a href="#">Сообщить об ошибке </a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>                          
+	</div>
+		
+</footer>
+
+<span class="btn-scroll-top">Наверх<i class="fa fa-long-arrow-up"></i></span>
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/fotorama.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+	 $(document).ready( function() {
+    $(".file-upload input[type=file]").change(function(){
+         var filename = $(this).val().replace(/.*\\/, "");
+         $("#filename").val(filename);
+    });
+});
+</script>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

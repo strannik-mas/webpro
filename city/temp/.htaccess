@@ -1,0 +1,15 @@
+Options Indexes FollowSymLinks
+DirectoryIndex
+AddDefaultCharset utf-8
+AddType application/x-httpd-php .htm .html
+AddHandler x-httpd-php5 .htm .html
+
+<FilesMatch "\.(htm|html|php)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+#RewriteEngine On
+
+#RewriteBase /
+
+#RewriteRule ^(.*)$ /index.php?ops=$1 [NC,QSA]

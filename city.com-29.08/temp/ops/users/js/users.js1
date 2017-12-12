@@ -1,0 +1,161 @@
+// Класс Билет сессии
+function Ticket(t)
+{
+	this.access_token = "";
+	this.expires_in = 0;
+	this.token_type = "";
+	this.scope = null;
+	this.refresh_token = "";
+}
+
+var checkTimer;
+var checkTimer2;
+var intervalRefresh;
+var checkInterval = 10000;
+var checkInterval2 = 20000;
+
+// Токен пользователя
+var ticket;
+function validateUser(){
+	var txtLog = document.getElementById("maintxtLogin") ? document.getElementById("maintxtLogin") : document.getElementById("txtLogin");
+	var txtPass = document.getElementById("maintxtPassword") ? document.getElementById("maintxtPassword") : document.getElementById("txtPassword");
+// Проверка заполнения элементов
+	if (txtLog.value == "" || txtPass.value == "")
+	{
+		alert("Заполните все поля!");
+		return;
+	}
+	var searchString = "grant_type=password&client_id=chat&client_secret=qwerty&username=" + txtLog.value + "&" + "password=" + txtPass.value;
+	sessionStorage.setItem('searchstr', searchString);
+	sessionStorage.setItem('uName', txtLog.value);
+//	console.log(searchString);
+	var req = getXmlHttpRequest();
+	
+	req.onreadystatechange = function()
+	{
+		if (req.readyState != 4) return;
+//		console.log(req.responseText);
+
+		ticket = JSON.parse(req.responseText);
+			//console.log(tiket);
+			
+		if (ticket.error){
+			alert('Неверные логин/пароль!');
+		}else {
+			window.setTimeout("refreshSession()", (ticket.expires_in - 10)*1000);
+			txtLog.value = "";
+			txtPass.value = "";
+			$('#enterFormSpan').css('display', 'none');
+			$('#divRightProfile').append("<a id='logoutLink' href='' onclick='function(e) {e.preventDefault(); logout(" 
+				+ ticket.access_token + ", " + ticket.refresh_token +"); return false;}'>Выйти Х</a>");
+			
+			sessionStorage.setItem('ticket', req.responseText);
+//			console.log(sessionStorage.getItem('ticket')); 
+			getOnlineUser();
+
+		}
+		
+	}
+
+	req.open("POST", "ops/users/OAuth2/tokenController.php", true);
+	req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	req.send(searchString);
+	
+}
+
+function refreshSession(){
+	//alert(sessionStorage.login);
+	
+	var req = getXmlHttpRequest();
+	
+	req.onreadystatechange = function()
+	{
+		if (req.readyState != 4) return;
+		//console.log(JSON.parse(req.responseText));
+		sessionStorage.setItem('ticket', req.responseText);
+		newToken = JSON.parse(req.responseText);
+			//console.log(tiket);
+			
+		
+		
+	}
+
+	req.open("POST", "ops/users/OAuth2/tokenController.php", true);
+	req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	req.send(sessionStorage.searchstr);
+	
+	intervalRefresh = window.setTimeout("refreshSession()", (newToken.expires_in - 10)*1000);
+}
+
+function getOnlineUser(){
+	//console.log(sessionStorage.ticket);
+	if(ticket){
+		//alert(1);
+		var jsonData2 = JSON.stringify(ticket);
+	}		
+	else if(sessionStorage.ticket) jsonData2 = sessionStorage.getItem('ticket');
+	//else return;
+	//console.log(jsonData2);
+	var req = getXmlHttpRequest();
+
+
+	req.onreadystatechange = function()
+		{
+			if (req.readyState != 4) return;
+			//console.log(req.responseText);
+			getOnlineUser.users = JSON.parse(req.responseText);
+			
+//			var divTempUs = document.getElementById("tempdiv");
+			var divUs = document.getElementById("divUsers");
+
+			//console.dir(divUs);
+			if(divUs != null){
+				// Удаление старых записей
+				while (divUs.hasChildNodes()) divUs.removeChild(divUs.lastChild);
+//				if(divTempUs)
+//					while (divTempUs.hasChildNodes()) divTempUs.removeChild(divTempUs.lastChild);
+				for (var i = 0; i < getOnlineUser.users.length; i++)
+				{
+
+					var user = document.createElement('div');
+					user.setAttribute('class', 'user');
+					if(getOnlineUser.users[i].path && getOnlineUser.users[i].fName)
+						user.innerHTML = "<div class='user-col-left'><a href='#'><span class='img-inner'><img src='"
+							 + "/" + getOnlineUser.users[i].path + "/" 
+							 + getOnlineUser.users[i].fName + "' alt='user' class='img-circle img-responsive'></span></a></div>";
+					else 
+						user.innerHTML = "<div class='user-col-left'><a href='#'><span class='img-inner'><img src='"
+							 + "ops/chat/img/thumb_170_170_c_noimg.png"  + "' alt='user' class='img-circle img-responsive'></span></a></div>";
+
+					var divUserName = document.createElement('div');
+					divUserName.setAttribute('class', 'user-col-right');
+					
+					var aAuthor = createNewElement("a", getOnlineUser.users[i].login);
+					aAuthor.setAttribute('class', 'user-name');
+					aLichka = createNewElement("a", 'Написать в личку');
+					aLichka.setAttribute('class', 'message-to-user');
+					divUserName.appendChild(aAuthor);
+					divUserName.appendChild(aLichka);
+					//console.log(divUserName);
+					user.appendChild(divUserName);
+					divUs.appendChild(user);
+					
+				}
+			}
+			getPushMessage();
+			//checkTimer2 = window.setTimeout("getOnlineUser()", checkInterval2);
+		}
+	req.open("POST", "ops/users/get_online_users.php", true);
+	req.setRequestHeader("Content-Type", "text/plain");
+	if(jsonData2)
+		req.send(jsonData2);	
+	else req.send(null);
+	
+}
+window.onload = function()
+{
+	if(document.getElementById("divResult")){
+		checkUpdates();
+	}
+	getOnlineUser();	
+};

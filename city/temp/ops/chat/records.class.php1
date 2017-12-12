@@ -1,0 +1,31 @@
+<?php
+// Класс записи чата
+class Records
+{
+	public $author;   // Автор записи
+	public $message;  // Сообщение автора
+	public $date;     // Дата и время сообщения
+	public $path;	  // relative path of image
+	public $filename;
+	public $curuser;	//текущий пользователь
+	
+	public function __construct($author='', $message='', $date='', $pathRel='', $fn='', $cuser = false)
+	{
+		$this->author = $author;
+		$this->message = $message;
+		$this->date = $this->convertDate2String($date);
+		$this->path = $pathRel;
+		$this->filename = $fn;
+		$this->curuser = $cuser;
+	}
+	
+	// Преобразует дату в строковый вид
+	public function convertDate2String($date)
+	{
+		if (is_numeric($date))
+			return date('d.m.Y H:i:s', $date);
+		else
+			return $date;
+	}
+}
+?>
