@@ -64,9 +64,9 @@ return datepicker.regional.ru;
                 var fontName = "Courier"; 
                 var fontSize = "10pt";
             }
-            var menstrDaysCount = 0; //количество дней месячных                
-            var middle = 0;         //для среднего значения температуры
-            var middle2 = 0;         //для среднего значения температуры
+            var menstrDaysCount = 0 //количество дней месячных                
+            var middle = 0;         //для среднего значения
+            var middle2 = 0;         //для среднего значения
             var curDay = 0;                     //текущий день
             var x_ovul = 0;                     //координата овуляции
             const tableGraphParamsName = 'graph_params';    //имя таблицы существующих графиков и их параметров
@@ -185,8 +185,6 @@ return datepicker.regional.ru;
                         this.value = this.value.substr(0,this.value.length-1);
                 });
             });
-			
-			
             function getSelectItems(){
                 $('#bazal_month').html('');
                 var thisDB = null;

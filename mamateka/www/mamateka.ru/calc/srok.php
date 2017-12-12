@@ -45,7 +45,7 @@ return datepicker.regional.ru;
 } ) );</script>
         <script>
             $(function (){
-                $("#datepicker_srok").datepicker({
+                $("#datepicker").datepicker({
                     changeMonth: true,
                     changeYear: true
                 }).on('change', function(){
@@ -54,22 +54,22 @@ return datepicker.regional.ru;
                     else $('input[type=number').prop('disabled', '');
                 });
                 $('#srok_f1').on('submit', function(){
-                    slim_newrequest($('input[name=func]').val(), '.result', $('#datepicker_srok').val()+','+$('input[name=week]').val()+','+$('input[name=month]').val());
+                    newrequest($('input[name=func]').val(), '.result', $('#datepicker').val()+','+$('input[name=week]').val()+','+$('input[name=month]').val());
                 });
                 $('input[type=number').on('input',function(){
                     if($(this).val()>0){
-                        $('#datepicker_srok').val('');
-                        $('#datepicker_srok').prop('disabled', 'disabled');
+                        $('#datepicker').val('');
+                        $('#datepicker').prop('disabled', 'disabled');
                         $t = $(this).val();
                         $('input[type=number').val('');
                         $(this).val($t);
                     }
                     if(!parseInt($('input[name=week]').val()) && !parseInt($('input[name=month]').val())){
-                        $('#datepicker_srok').prop('disabled', '');
+                        $('#datepicker').prop('disabled', '');
                     }
                 });
             });
-            function slim_newrequest(func, toupdate, params) {
+            function newrequest(func, toupdate, params) {
 //                console.log(params);               
                 $.ajax({
                     type : "GET",
@@ -89,13 +89,13 @@ return datepicker.regional.ru;
         </script>
     </head>
     <body>
-        <h2>Акушерский срок беременности</h2>
+        <h1>Акушерский срок беременности</h1>
         <form id="srok_f1" onsubmit="return false">
-            <input type="hidden" name="func" value="slim_getSrok" />
+            <input type="hidden" name="func" value="getSrok" />
             <fieldset>
                 <legend>Расчет срока</legend>
                 <label for="datepicker">Укажите первый день последней менструации</label>
-                <input type="text" name="ovul" id="datepicker_srok">
+                <input type="text" name="ovul" id="datepicker">
             </fieldset>
             <fieldset>
                 <legend>Расчет недели и месяца</legend>

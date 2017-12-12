@@ -58,10 +58,10 @@ return datepicker.regional.ru;
 					localStorage.setItem('tabindex', $("#tabs").tabs("option", "active"));
 				});
                 $('#pol_f1').on('submit', function(){
-                   newrequest($('input[name=func]').val(), '#tabs_pol-1', $('input[name=m_b]').val() + ',' + $('input[name=f_b]').val() + ',' + $('input[name=zach]').val())
+                   newrequest($('input[name=func]').val(), '#tabs-1', $('input[name=m_b]').val() + ',' + $('input[name=f_b]').val() + ',' + $('input[name=zach]').val())
                 });
                 $('#pol_f2').on('submit', function(){
-                   newrequest($('input[name=func2]').val(), '#tabs_pol-2', $('input[name=m2_b]').val() + ',' + $('input[name=f2_b]').val() + ',' + $('input[name=zach2]').val());
+                   newrequest($('input[name=func2]').val(), '#tabs-2', $('input[name=m2_b]').val() + ',' + $('input[name=f2_b]').val() + ',' + $('input[name=zach2]').val());
                 });
             });
             function newrequest(func, toupdate, params) {
@@ -106,11 +106,11 @@ return datepicker.regional.ru;
         <p><b>Внимание!</b> Большие кровопотери также приводят к обновлению крови, поэтому при заполнении формы теста, отметьте либо дату последней кровопотери (переливание, сдача крови, операции), либо свой день рождения.</p>
         <div id="tabs" style="min-width: 800px">
             <ul>
-				<li><a href="#tabs_pol-1">По дате рождения</a></li>
-				<li><a href="#tabs_pol-2">По дате последней кровопотери
+				<li><a href="#tabs-1">По дате рождения</a></li>
+				<li><a href="#tabs-2">По дате последней кровопотери
 </a></li>
 			</ul>
-            <div id="tabs_pol-1">
+            <div id="tabs-1">
                 <form id="pol_f1" onsubmit="return false">
                     <input type="hidden" name="func" value="whichPol" />
                     <table cellspacing="1" cellpadding="2" >
@@ -129,7 +129,7 @@ return datepicker.regional.ru;
                     </table>                   
                 </form>
             </div>
-            <div id="tabs_pol-2">
+            <div id="tabs-2">
                 <form id="pol_f2" onsubmit="return false">
                     <input type="hidden" name="func2" value="whichPol" />
                     <table cellspacing="1" cellpadding="2" >
