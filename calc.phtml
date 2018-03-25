@@ -1,0 +1,33 @@
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <label for="ch1">Первое число</label>
+    <input type="number" name="ch1" id="ch1" required><br>
+    <label for="znak">Знак</label>
+    <select name="znak" id="znak" required>
+		<option selected value=0>Выберите операцию</option>
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+    </select><br>
+    <label for="ch2">Второе число</label>
+    <input type="number" name="ch2" id="ch2" required><br>
+	<input type="submit" id="submit" value="Вычислить">
+</form>
+<?php
+	if ($_SERVER['REQUEST_METHOD'] == "POST"){
+		try{
+			if($_POST["znak"] == "/" && $_POST[ch2] == 0) throw new Exception("Деление на 0!\n");
+			switch($_POST["znak"]){
+				case "+": $result = $_POST["ch1"] + $_POST["ch2"]; break;
+				case "-": $result = $_POST["ch1"] - $_POST["ch2"];break;
+				case "*": $result = $_POST["ch1"] * $_POST["ch2"];break;
+				case "/": $result = $_POST["ch1"] / $_POST["ch2"];break;			
+			}
+		} catch (Exception $ex) {
+			echo $ex->getMessage();
+			exit;
+		}
+		
+	}
+	echo "<p>Результат: $result</p>";
+?>

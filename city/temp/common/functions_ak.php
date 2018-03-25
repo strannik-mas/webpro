@@ -192,7 +192,6 @@ function list_ad($data) {
 	// npr($items);
 	if (!$items) {
 		return 'No Results!';
-		break;
 	}
 
 	$query2 = "SELECT * FROM ads as a {$where}";
@@ -487,7 +486,6 @@ function list_user($data) {
 	$items = $link -> query($query);
 	// npr($items);
 	if (!$items) {
-		break;
 	}
 
 	$query2 = "SELECT * FROM users as a {$where}";
