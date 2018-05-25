@@ -1,4 +1,4 @@
-<?php $uid = generateRandomString(); ?>
+<?php /*$uid = generateRandomString(); */?>
 <div class="main-content">
 	<div class="container-fluid map">
 		<div class="accident-map row">

@@ -62,6 +62,9 @@
 					max: 170,
 					slide: function(event, ui){
 						$('.ves').val(ui.value);
+                        if(Number($('.zhel_ves').val()) > Number($('.ves').val())){
+                            changeOption(false);
+                        }else changeOption(true);
 					}
 				});
 				$('.range_ves').slider( "value", $('.ves').val());
@@ -70,13 +73,14 @@
 					max: 170,
 					slide: function(event, ui){
 						$('.zhel_ves').val(ui.value);
-                        if($('.zhel_ves').val() > $('.ves').val()){
+                        if(Number($('.zhel_ves').val()) > Number($('.ves').val())){
                             changeOption(false);
                         }else changeOption(true);
 					}
 				});
+                
 				$('.range_zhel_ves').slider( "value", $('.zhel_ves').val());
-                if($('.zhel_ves').val() > $('.ves').val()){
+                if(Number($('.zhel_ves').val()) > Number($('.ves').val())){
                     changeOption(false);
                 }
 				$('.range_vozr').slider({
@@ -97,7 +101,8 @@
 				});
 				$('.range_calories').slider( "value", $('.calories').val());
 			});
-            function changeOption(flag){
+            function changeOption(flag = true){
+                console.dir(flag);
                 if(!flag){
                     $('select[name=tar]').children('option').eq(2).text('Медленного повышения веса');
                     $('select[name=tar]').children('option').eq(3).text('Умеренного повышения веса');
