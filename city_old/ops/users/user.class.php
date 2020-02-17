@@ -1,7 +1,12 @@
 <?php
 require('userinfo.class.php');
-require('ticket.class.php');
-require_once('records.class.php');
+//echo $_SERVER['DOCUMENT_ROOT'];
+require_once($_SERVER['DOCUMENT_ROOT'] . '/temp/ops/chat/records.class.php');
+/*
+ini_set('display_errors',1);error_reporting(E_ALL);
+require_once('./../users/OAuth2/Autoloader.php');
+OAuth2\Autoloader::register();
+*/
 
 /*
 ** Класс Пользователь сайта
@@ -13,20 +18,18 @@ class User
 	private $db;
 	
 	//database
-	const DB_HOST = 'localhost';
-	const DB_NAME = 'city';
-	const DB_LOGIN = 'root';
-	const DB_PASSWORD = '';
+	private $_params; 			//array from conf.ini file
 	
 	// Время жизни сессии в секундах
-	const SESS_TIMEOUT = 180;
+	const SESS_TIMEOUT = 90;
 	
 	// Констуктуор класса
 	public function __construct()
 	{
+		$this->_params = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/temp/common/conf.ini');
 		// Открываем базу данных
-		$this->db = mysqli_connect(self::DB_HOST, self::DB_LOGIN, self::DB_PASSWORD, self::DB_NAME) or die(mysqli_connect_error());
-		//var_dump($this->db);
+//var_dump($this->_params['db.user']);
+		$this->db = mysqli_connect($this->_params['db.host'], $this->_params['db.user'], $this->_params['db.pass'], $this->_params['db.name']) or die(mysqli_connect_error());
 	}
 	/*
 	public function getUserID($uName, $hashPass){
@@ -37,105 +40,133 @@ class User
 		else return false;
 		
 	}
+*/
+
+	/**
+	*Function addOrUpdateUser user by login and password or data from social 
+	* @var array $userInfo			login and password
+	* @var string $sql		simple MySQL query string to insert 
 	*/
 	// Добваление нового пользователя или изменение существующего
-	public function addOrUpdate($userInfo)
+	public function addOrUpdateUser($userInfo)
 	{
-		
-		$login = $userInfo->login;
-		$hash = md5($login . $userInfo->password);
-		//var_dump($userInfo->path); exit();
-		
+				
 		// Если такого пользователя нет...
-		if (! mysqli_fetch_row($this->db->query("SELECT COUNT(id) FROM users 
-				WHERE username='$login' AND pass = '$hash'"))[0])
+		if (! mysqli_fetch_row($this->db->query("SELECT COUNT(username) FROM oauth_users WHERE username='$userInfo[0]'"))[0])
 		{
 			//echo "string";
 			// Добавляем пользователя
-			$sql = "INSERT INTO users (username, pass) 
-				VALUES ('$login', '$hash')";
+			$sql = "INSERT INTO oauth_users (username, password, first_name, last_name) 
+				VALUES ('$userInfo[0]', '$userInfo[1]'," . ($userInfo[2] ? "'".$userInfo[2]."'" : "''") .", " . ($userInfo[3] ? "'".$userInfo[3]."'" : "''").")";
 			if(!$this->db->query($sql))
 				echo "SQL: $sql<br>" . 'failed insert row: (' . $this->db->errno . ")" . $this->db->error;
+			/*
 			$userId = mysqli_fetch_row($this->db->query("SELECT id FROM users 
 				WHERE username='$login' AND pass = '$hash'"))[0];
 			$sql = "INSERT INTO images (entid, path, filename) 
 				VALUES ($userId, '$userInfo->path', '$userInfo->fName')";
+
 			if(!$this->db->query($sql))
 				echo "SQL: $sql<br>" . 'failed insert image row: (' . $this->db->errno . ")" . $this->db->error;
-				
+				*/
+			else {
+				if(!$userInfo[4])
+					echo "Вы успешно зарегестрировались!";
+			}
 		}else{
-			echo "2";
+			if(!$userInfo[4]){
+				var_dump($userInfo[4]);
+				echo "Такой пользователь уже существует. Смените логин";
+			}
 			// Меняем ифнормацию о пользователе
 			//$this->db->query("UPDATE users SET username = '$login', pass = '$hash' WHERE username = '$login'");
-		}
-			
+		}			
 	}
-	
-	// Проверка данных пользователя и возврат нового билета
-	public function validate($userInfo)
-	{
-		$login = $userInfo->login;
-		$hash = md5($login . $userInfo->password);
-		// Если такой пользователь есть, получим его ID
-		$userId = mysqli_fetch_row($this->db->query("SELECT id FROM users 
-				WHERE username='$login' AND pass = '$hash'"))[0];
-		
-		$userName = mysqli_fetch_row($this->db->query("SELECT username FROM users 
-				WHERE id = $userId"))[0];
-//		var_dump($userName);		exit();
-		if ($userId)
-		{
-			// Формируем новый билет
-			$time = time();
-			$ticket = new Ticket(md5($hash . $time), true, $userName);
-			$this->db->query("INSERT INTO session (sess_id, user_id, last_request) 
-				VALUES ('$ticket->id', $userId, $time)") or die($this->db->error);
-			
-			return $ticket;
-		}	
-		else
-		{
-			// Пользователь не найден - возвращаем пустой билет
-			return new Ticket();
+
+	public function addSessionData($accToken, $clientID, $uID){
+		$flag = false;
+		$time = time();
+		$sql = "INSERT INTO oauth_access_tokens (access_token, client_id, user_id) 
+				VALUES ('$accToken', '$clientID', '$uID')";
+		if(!$this->db->query($sql)){
+			echo "SQL: $sql<br>" . 'failed insert row: (' . $this->db->errno . ")" . $this->db->error;
+			$flag = false;
 		}
+		else $flag = true;
+
+		$sql = "INSERT INTO session (sess_id, user_id, last_request) 
+				VALUES ('$accToken', '$uID', $time)";
+		if(!$this->db->query($sql)){
+			echo "SQL: $sql<br>" . 'failed insert row: (' . $this->db->errno . ")" . $this->db->error;
+			$flag = false;
+		}
+		else $flag = true;
+		if($flag)
+			return $this->getOnlineUsers();
 	}
-	
+
 	// Обновление информации о сессии пользователя
 	public function refreshSession($ticket)
 	{
 		$time = time();
-		
-		// Обновление сессии		
-		$this->db->query("UPDATE session SET last_request = $time 
-				WHERE sess_id = '$ticket->id'");
+		if(isset($ticket->access_token)){
+			
+			$sessionId = mysqli_fetch_row($this->db->query("SELECT sess_id FROM session WHERE sess_id = '$ticket->access_token'"))[0];
+			if($sessionId){
+				// Обновление сессии		
+				$this->db->query("UPDATE session SET last_request = $time 
+					WHERE sess_id = '$ticket->access_token'");
+			}else{
+				$userId = mysqli_fetch_row($this->db->query("SELECT user_id FROM oauth_access_tokens WHERE access_token ='$ticket->access_token'"))[0];
+				$this->db->query("INSERT INTO session (sess_id, user_id, last_request) 
+					VALUES ('$ticket->access_token', '$userId', $time)") or die($this->db->error);
+			}
+		}		
 		$rowsChanged = $this->db->affected_rows;
 		$deadTime = $time - User::SESS_TIMEOUT;
 		$this->db->query("DELETE FROM session WHERE last_request < $deadTime");
+		
+		$this->db->query("DELETE FROM oauth_access_tokens WHERE UNIX_TIMESTAMP(expires) < $time");
+
+		$this->db->query("DELETE FROM oauth_refresh_tokens WHERE UNIX_TIMESTAMP(expires) < $time");
+		
 		return $rowsChanged;
+				
+	}
+	public function logout($id){
+		$this->db->query("DELETE FROM session WHERE sess_id = $id");
 	}
 	
-//	public function deleteFromSession($id){
-//		$deadTime = time() - User::SESS_TIMEOUT;
-//		$this->db->query("DELETE FROM session WHERE sess_id = $id");
-//	}
-
+	
+/*	
+	public function deleteFromSession($id){
+		$deadTime = time() - User::SESS_TIMEOUT;
+		$this->db->query("DELETE FROM session WHERE sess_id = $id");
+	}
+*/
 	// Возвращает список пользователей ONLINE в виде массива объектов UserInfo
 	public function getOnlineUsers()
 	{
-		$res = $this->db->query("SELECT id, username 
-				FROM users, session
-				WHERE users.id = session.user_id");
+		$res = $this->db->query("SELECT username 
+				FROM oauth_users, session
+				WHERE username = session.user_id");
 		$users = array();
 		while ($row = mysqli_fetch_row($res)){
 			$users[] = new UserInfo(
 				$row[0], 
-				$row[1],
-				'',
-				mysqli_fetch_row($this->db->query("SELECT `path`  FROM `images` WHERE entid=$row[0]"))[0],
-				mysqli_fetch_row($this->db->query("SELECT `filename`  FROM `images` WHERE entid=$row[0]"))[0]
+				mysqli_fetch_row($this->db->query("SELECT `path`  FROM `images` WHERE entid='$row[0]'"))[0],
+				mysqli_fetch_row($this->db->query("SELECT `filename`  FROM `images` WHERE entid='$row[0]'"))[0]
 			);		
 		}
 		return $users;
+	}
+
+	public function getAllUsers(){
+		$res = $this->db->query("SELECT * FROM oauth_users");
+		while ($row = mysqli_fetch_assoc($res)){
+			$uArr[$row['username']] = array('password' => $row['password'], 'first_name' => $row['first_name'], 'last_name' => $row['last_name']);
+		}
+		return $uArr;
 	}
 	
 	//add record to chat table
@@ -163,10 +194,10 @@ class User
 	 */
 	
 	public function showResords($recTicket = '', $tableName){
-		$res = $this->db->query("SELECT * FROM $tableName ORDER BY `date`");
+		$res = $this->db->query("SELECT * FROM $tableName ORDER BY `date` DESC");
 		$records = array();
 		if ($tableName == 'notifications')
-			$sessID = $recTicket->id;
+			$sessID = $recTicket->access_token;
 		else
 			$sessID = $recTicket->from;
 		while ($row = mysqli_fetch_assoc($res))
@@ -181,8 +212,7 @@ class User
 				WHERE id = '" . $row['id'] . "'");
 						$records[] = new Records(
 							$row['id'], 
-							mysqli_fetch_row($this->db->query("SELECT username FROM users 
-				WHERE id='" . $row['from'] . "'"))[0], 
+							$row['from'], 
 							$row['to'], 
 							$row['message'], 
 							$row['date'], 
@@ -199,8 +229,8 @@ class User
 						$this->db->query("UPDATE $tableName SET `status` = 1 WHERE `id` = '" . $row['id'] . "'");
 						$records[] = new Records(
 							$row['id'], 
-							mysqli_fetch_row($this->db->query("SELECT username FROM users 
-				WHERE id='" . $row['from'] . "'"))[0], 
+							mysqli_fetch_row($this->db->query("SELECT username FROM oauth_users 
+				WHERE username='" . $row['from'] . "'"))[0], 
 							$row['to'], 
 							$row['message'], 
 							$row['date'], 

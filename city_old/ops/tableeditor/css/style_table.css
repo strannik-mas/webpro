@@ -1,0 +1,90 @@
+#t1 {
+    margin: 10px 0 10px;
+}
+thead td {
+    text-align: right;
+}
+th{
+    position: relative;
+}
+th span:hover {
+    cursor: pointer;
+}
+th .ar_up {
+    position: absolute;
+    top: 0;
+    right:0;
+}
+th .ar_down {
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+td a.del_link{    
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../img/delete.jpg) no-repeat;
+}
+/* Панель выбора таблиц */
+#tableSelect {
+	background-color: #ccc;
+	height: 80px;
+}
+#f1{
+	display: block;
+	margin-top: 20px;
+}
+
+/*for pagination*/
+.pagination{
+    padding: 2px;
+}
+.pagination ul{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+}
+.pagination li{
+    list-style-type: none;
+    display: inline;
+    padding-bottom: 1px;
+}
+.pagination a, .pagination a:visited{
+    padding: 0 5px;
+    border: 1px solid #9aafe5;
+    text-decoration: none;
+    color: #2e6ab1;
+}
+.pagination a:hover, .pagination a:active{
+    border: 1px solid #2b66a5;
+    color: #000;
+    background-color: #FFFF80;
+}
+.pagination a.prevnext{
+    font-weight: bold;
+    margin:5px;
+}
+.page_number {
+    border: 1px solid #9aafe5;
+    color: #2e6ab1;
+    padding:5px;
+    text-align: center;
+    width: 20px;
+}
+.page-number {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8;
+    text-align: center;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    margin-right: 0.5em;
+}
+
+li a.active {
+    background: #c00;
+}
