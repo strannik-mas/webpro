@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "784e63879e7d9c20f8d95dec9c209355",
-    "content-hash": "919506cd3e8e1470c9e2158e68c89ff7",
+    "content-hash": "46e95fa0c1af9c598d1b60ca1751fda0",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -59,7 +58,7 @@
                 "sdk"
             ],
             "abandoned": "aws/aws-sdk-php",
-            "time": "2014-10-15 20:05:19"
+            "time": "2014-10-15T20:05:19+00:00"
         },
         {
             "name": "cssjanus/cssjanus",
@@ -94,7 +93,7 @@
                 "Apache-2.0"
             ],
             "description": "Convert CSS stylesheets between left-to-right and right-to-left.",
-            "time": "2014-11-14 20:00:50"
+            "time": "2014-11-14T20:00:50+00:00"
         },
         {
             "name": "educoder/pest",
@@ -136,7 +135,7 @@
             ],
             "description": "A proper REST client for PHP.",
             "homepage": "https://github.com/educoder/pest",
-            "time": "2013-11-17 12:58:01"
+            "time": "2013-11-17T12:58:01+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -157,12 +156,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "HTMLPurifier": "library/"
-                },
                 "files": [
                     "library/HTMLPurifier.composer.php"
-                ]
+                ],
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -180,7 +179,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2013-11-30 08:25:19"
+            "time": "2013-11-30T08:25:19+00:00"
         },
         {
             "name": "google/recaptcha",
@@ -225,19 +224,19 @@
                 "recaptcha",
                 "spam"
             ],
-            "time": "2015-09-02 17:23:59"
+            "time": "2015-09-02T17:23:59+00:00"
         },
         {
             "name": "imagine/imagine",
             "version": "v0.6.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/avalanche123/Imagine.git",
+                "url": "https://github.com/php-imagine/Imagine.git",
                 "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/149041d2a1b517107bfe270ca2b1a17aa341715d",
+                "url": "https://api.github.com/repos/php-imagine/Imagine/zipball/149041d2a1b517107bfe270ca2b1a17aa341715d",
                 "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d",
                 "shasum": ""
             },
@@ -282,7 +281,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2015-09-19 16:54:05"
+            "time": "2015-09-19T16:54:05+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -332,7 +331,7 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2014-01-12 16:20:24"
+            "time": "2014-01-12T16:20:24+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -392,7 +391,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2017-01-09 09:33:47"
+            "time": "2017-01-09T09:33:47+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -438,19 +437,19 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2014-07-24 09:48:15"
+            "time": "2014-07-24T09:48:15+00:00"
         },
         {
             "name": "robmorgan/phinx",
             "version": "v0.4.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/robmorgan/phinx.git",
+                "url": "https://github.com/cakephp/phinx.git",
                 "reference": "0d1f9cb9939f65f506a8a3f5fee356764c310fd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/0d1f9cb9939f65f506a8a3f5fee356764c310fd4",
+                "url": "https://api.github.com/repos/cakephp/phinx/zipball/0d1f9cb9939f65f506a8a3f5fee356764c310fd4",
                 "reference": "0d1f9cb9939f65f506a8a3f5fee356764c310fd4",
                 "shasum": ""
             },
@@ -500,24 +499,28 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2015-02-23 16:38:12"
+            "time": "2015-02-23T16:38:12+00:00"
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.21",
+            "version": "v3.1.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a"
+                "reference": "a2713ab89e6d773bc4819f11857af7f6b2e353a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a",
-                "reference": "1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/a2713ab89e6d773bc4819f11857af7f6b2e353a9",
+                "reference": "a2713ab89e6d773bc4819f11857af7f6b2e353a9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5 || ^6.5 || ^5.7 || ^4.8",
+                "smarty/smarty-lexer": "^3.1"
             },
             "type": "library",
             "extra": {
@@ -527,9 +530,7 @@
             },
             "autoload": {
                 "classmap": [
-                    "libs/Smarty.class.php",
-                    "libs/SmartyBC.class.php",
-                    "libs/sysplugins/smarty_security.php"
+                    "libs/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -555,7 +556,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-31 04:22:20"
+            "time": "2022-05-17T12:57:52+00:00"
         },
         {
             "name": "symfony/config",
@@ -606,7 +607,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "time": "2015-03-30T15:54:10+00:00"
         },
         {
             "name": "symfony/console",
@@ -664,7 +665,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-26 09:08:40"
+            "time": "2015-07-26T09:08:40+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -717,7 +718,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2015-05-15 13:33:16"
+            "time": "2015-05-15T13:33:16+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -767,7 +768,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-22 16:55:57"
+            "time": "2015-03-22T16:55:57+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -817,7 +818,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "time": "2015-03-30T15:54:10+00:00"
         },
         {
             "name": "tedivm/jshrink",
@@ -863,7 +864,7 @@
                 "javascript",
                 "minifier"
             ],
-            "time": "2014-11-11 03:54:14"
+            "time": "2014-11-11T03:54:14+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -910,7 +911,7 @@
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "time": "2015-04-01 14:40:03"
+            "time": "2015-04-01T14:40:03+00:00"
         },
         {
             "name": "twig/extensions",
@@ -962,7 +963,8 @@
                 "i18n",
                 "text"
             ],
-            "time": "2015-08-22 16:38:35"
+            "abandoned": true,
+            "time": "2015-08-22T16:38:35+00:00"
         },
         {
             "name": "twig/twig",
@@ -1023,7 +1025,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:11:59"
+            "time": "2016-05-30T09:11:59+00:00"
         }
     ],
     "packages-dev": [],
@@ -1033,5 +1035,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
